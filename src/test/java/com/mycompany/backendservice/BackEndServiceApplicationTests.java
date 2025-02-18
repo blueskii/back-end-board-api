@@ -47,7 +47,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 class BackEndServiceApplicationTests {
 	private MockMvc mockMvc;
-	private static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM5MjM5ODQwfQ.42AOlqymWoIZ13IiFGTrsWdpwVC_hxQRI0ouON09_f0";
+	private static String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzQxNzM1MDUyfQ.q2FF4WYGliDZrXmUe4uOcblglunX0-sZjorSgpfibB8";
 	
 	@BeforeEach
 	void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
