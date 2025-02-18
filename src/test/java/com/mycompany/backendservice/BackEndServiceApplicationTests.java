@@ -53,7 +53,7 @@ class BackEndServiceApplicationTests {
 	void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
 			.apply(documentationConfiguration(restDocumentation)) 
-			.apply(SecurityMockMvcConfigurers.springSecurity()) // Spring Security 통합
+			.apply(SecurityMockMvcConfigurers.springSecurity()) // Spring Security 통합 
 			.build();
 	}
 	
