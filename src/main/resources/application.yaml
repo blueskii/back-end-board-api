@@ -1,0 +1,22 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: back-end-service
+    
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@blueskii.iptime.org:1521:orcl
+    username: user_spring
+    password: oracle
+    
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 15MB    
+      
+mybatis:
+  config-location: classpath:mybatis/mapper-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml  
+  

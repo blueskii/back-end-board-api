@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="author" content="React &amp; Vue 강의시 사용할 공용 API 문서">
+<title>REST API Documentation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1><strong>REST API Documentation</strong></h1>
+<div class="details">
+<span id="author" class="author">React &amp; Vue 강의시 사용할 공용 API 문서</span><br>
+<span id="revnumber">version 0.0.1-SNAPSHOT</span>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">목차</div>
+<ul class="sectlevel1">
+<li><a href="#_게시판_서비스">게시판 서비스</a>
+<ul class="sectlevel2">
+<li><a href="#_게시물_목록_boardlist">게시물 목록: /board/list</a></li>
+<li><a href="#_게시물_쓰기_boardcreate">게시물 쓰기: /board/create</a></li>
+<li><a href="#_게시물_읽기_boardread">게시물 읽기: /board/read</a></li>
+<li><a href="#_게시물_수정_boardupdate">게시물 수정: /board/update</a></li>
+<li><a href="#_게시물_삭제_boarddelete">게시물 삭제: /board/delete</a></li>
+<li><a href="#_첨부_파일_다운로드_boardbattach">첨부 파일 다운로드: /board/battach</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_게시판_서비스">게시판 서비스</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>게시물 목록/쓰기/읽기/수정/삭제 기능을 제공합니다.</p>
+</div>
+<div class="sect2">
+<h3 id="_게시물_목록_boardlist">게시물 목록: /board/list</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 요청</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GET /board/list?pageNo=1 HTTP/1.1
+Host: localhost:8080</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">페이지 번호</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 응답</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 3541
+
+{
+  "pager" : {
+    "rowsPerPage" : 10,
+    "pagesPerGroup" : 5,
+    "totalRows" : 1008,
+    "pageNo" : 1,
+    "totalPageNo" : 101,
+    "totalGroupNo" : 21,
+    "startPageNo" : 1,
+    "endPageNo" : 5,
+    "pageArray" : [ 1, 2, 3, 4, 5 ],
+    "groupNo" : 1,
+    "startRowNo" : 1,
+    "startRowIndex" : 0,
+    "endRowNo" : 10,
+    "endRowIndex" : 9
+  },
+  "boards" : [ {
+    "bno" : 11493,
+    "btitle" : "게시물 제목",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-19T14:49:04.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11464,
+    "btitle" : "게시물 제목",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-19T09:55:53.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11463,
+    "btitle" : "게시물 제목",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-19T09:54:15.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11462,
+    "btitle" : "게시물 제목",
+    "bcontent" : null,
+    "bwriter" : null,
+    "bdate" : "2025-01-19T09:52:02.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11461,
+    "btitle" : "게시물 제목",
+    "bcontent" : null,
+    "bwriter" : null,
+    "bdate" : "2025-01-19T09:51:11.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11441,
+    "btitle" : "신용권",
+    "bcontent" : null,
+    "bwriter" : null,
+    "bdate" : "2025-01-18T12:44:44.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11428,
+    "btitle" : "제목!",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-14T09:39:35.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : "photo1.jpg",
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11427,
+    "btitle" : "제목",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-14T07:51:53.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : null,
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11426,
+    "btitle" : "제목",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-14T07:48:32.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : null,
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  }, {
+    "bno" : 11425,
+    "btitle" : "제목",
+    "bcontent" : null,
+    "bwriter" : "user",
+    "bdate" : "2025-01-14T07:41:51.000+00:00",
+    "bhitcount" : 0,
+    "battach" : null,
+    "battachoname" : null,
+    "battachsname" : null,
+    "battachtype" : null,
+    "battachdata" : null
+  } ]
+}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.totalRows</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">페이징 대상이 되는 전체 행수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.totalPageNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">전체 페이지수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.totalGroupNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">전체 그룹수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.startPageNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 그룹의 시작 페이지 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.endPageNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 그룹의 끝 페이지 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.pageArray</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 그룹의 페이지 번호 배열</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.pageNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 페이지 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.pagesPerGroup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">그룹당 페이지수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.groupNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 그룹의 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.rowsPerPage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">패이지당 행수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.startRowNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 페이지의 시작 행의 번호, 1부터 시작</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.startRowIndex</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 페이지의 시작 행의 인덱스, 0부터 시작</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.endRowNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 페이지의 끝 행의 순번, 1부터 시작</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pager.endRowIndex</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 페이지의 끝 행의 인덱스, 0부터 시작</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].btitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].bcontent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].bwriter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].bdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].bhitcount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].battach</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].battachoname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 실제 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].battachsname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일이 서버에 저장된 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].battachtype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 타입</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boards[].battachdata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일 데이터</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_게시물_쓰기_boardcreate">게시물 쓰기: /board/create</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 요청</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>POST /board/create HTTP/1.1
+Content-Type: multipart/form-data; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM5MjM5ODQwfQ.42AOlqymWoIZ13IiFGTrsWdpwVC_hxQRI0ouON09_f0
+Host: localhost:8080
+
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=battach; filename=test-file.txt
+Content-Type: text/plain
+
+파일 내용입니다.
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm--</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Part</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>btitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">문자파트: 게시물 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcontent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">문자파트: 게시물 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battach</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">파일파트: 첨부 파일</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 응답</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 322
+
+{
+  "bno" : 11503,
+  "btitle" : "게시물 제목",
+  "bcontent" : "게시물 내용",
+  "bwriter" : "user",
+  "bdate" : "2025-01-20T22:49:54.466+00:00",
+  "bhitcount" : 0,
+  "battach" : null,
+  "battachoname" : "test-file.txt",
+  "battachsname" : null,
+  "battachtype" : "text/plain",
+  "battachdata" : null
+}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>btitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcontent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bwriter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bhitcount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battach</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachoname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 실제 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachsname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일이 서버에 저장된 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachtype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 타입</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachdata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일 데이터</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_게시물_읽기_boardread">게시물 읽기: /board/read</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 요청</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GET /board/read/10500 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM5MjM5ODQwfQ.42AOlqymWoIZ13IiFGTrsWdpwVC_hxQRI0ouON09_f0
+Host: localhost:8080</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. /board/read/{bno}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 응답</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 312
+
+{
+  "bno" : 10500,
+  "btitle" : "신용권",
+  "bcontent" : "내용입니다.",
+  "bwriter" : "user",
+  "bdate" : "2023-09-06T09:30:34.000+00:00",
+  "bhitcount" : 3,
+  "battach" : null,
+  "battachoname" : "photo1.jpg",
+  "battachsname" : null,
+  "battachtype" : "image/jpeg",
+  "battachdata" : null
+}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>btitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcontent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bwriter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bhitcount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battach</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachoname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 실제 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachsname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일이 서버에 저장된 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachtype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 타입</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachdata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일 데이터</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_게시물_수정_boardupdate">게시물 수정: /board/update</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 요청</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>POST /board/update HTTP/1.1
+Content-Type: multipart/form-data; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM5MjM5ODQwfQ.42AOlqymWoIZ13IiFGTrsWdpwVC_hxQRI0ouON09_f0
+Host: localhost:8080
+
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=battach; filename=test-file.txt
+Content-Type: text/plain
+
+파일 내용입니다.
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm--</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Part</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">문자파트: 게시물 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>btitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">문자파트: 게시물 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcontent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">문자파트: 게시물 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battach</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">파일파트: 첨부 파일</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 응답</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 322
+
+{
+  "bno" : 10500,
+  "btitle" : "게시물 제목",
+  "bcontent" : "게시물 내용",
+  "bwriter" : "user",
+  "bdate" : "2023-09-06T09:30:34.000+00:00",
+  "bhitcount" : 3,
+  "battach" : null,
+  "battachoname" : "test-file.txt",
+  "battachsname" : null,
+  "battachtype" : "text/plain",
+  "battachdata" : null
+}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>btitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 제목</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bcontent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bwriter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 작성 일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bhitcount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battach</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 조회수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachoname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 실제 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachsname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일이 서버에 저장된 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachtype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일의 타입</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>battachdata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">첨부 파일 데이터</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_게시물_삭제_boarddelete">게시물 삭제: /board/delete</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 요청</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>DELETE /board/delete/10400 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM5MjM5ODQwfQ.42AOlqymWoIZ13IiFGTrsWdpwVC_hxQRI0ouON09_f0
+Host: localhost:8080</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. /board/delete/{bno}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 응답</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_첨부_파일_다운로드_boardbattach">첨부 파일 다운로드: /board/battach</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 요청</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GET /board/battach/10400 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIiwiZXhwIjoxNzM5MjM5ODQwfQ.42AOlqymWoIZ13IiFGTrsWdpwVC_hxQRI0ouON09_f0
+Host: localhost:8080</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. /board/delete/{bno}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bno</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">게시물 번호</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP 응답</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Disposition: attachment; filename="photo16.jpg"
+Content-Type: image/jpeg
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 49225
+
+���� JFIF      �� C
+
+
+
+#%$""!&amp;+7/&amp;)4)!"0A149;&gt;&gt;&gt;%.DIC&lt;H7=&gt;;�� C
+;("(;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;�� �l" ��           
+�� �   } !1AQa"q2���#B��R��$3br�
+%&amp;'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz���������������������������������������������������������������������������        
+�� �  w !1AQaq"2�B����	#3R�br�
+$4�%�&amp;'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz��������������������������������������������������������������������������   ? �.)qJ}I��(��PK@� R�J�)qF)qE�1K�\R��&amp;)أ��p )E(�R �Q�p�`(N�� �b��1)h����.) ���- �����11K�\R�QK�\R��R�KHa�\Q�(���R�1F)Qp����p�b����+�@)qK�) K�\Q�C�R�Ҹ	�\R�Ha�Z(�
+\R�R������b������	K�1K�C
+P(��;	�\R�7�RҁK�C��R�J(� S�&amp;)�RR�Z��o�\R�K���y�K�QK�.N���p����\Q�\R
+QJ-  R�R�H
+ZP)qE� S���)\�P(���
+) K�)qH�.)qK� LR�Z@%�b�� R�
+@��.)qJ㰀R�
+P*nU�� S��)iqF(����� Qq�)qK�\R ���)�b�
+\R�W��Q�\R�	�\R��1 ��.(�p����.)qHbb�
+)hb�R�Ҹ	�P(��pF)@��P��Q�\RKE.) ��(�(�PQ�ZZ@ �P)i)qE(�b��ZEX�)qJ.+ܹ��J ��.)@�p����.)@��&amp;)@��(\, ��.)qJ㰘�@�)\��R����S��㰂������1N��p�K�P)q@�.)��E:��3��%��ql�4l��0�x��J�bLQ�v(���R�b��LS��
+p�J(��`��R�ʰ�R�b�����������
+Z.����+�LR�
+1Hv )@���� RҸR�C
+P(�J\QJ)\�--�0��)i\,�R�J�R�1KHaK�1KJ�R�ZC
+Z1K�C )h���P)i\v
+(��`����;v)q@�W�s̰������`�.(�� )@��(���.)@��+���.)qJ�
+P)qJ+���(�S��q�LR�J8
+.BӱJ8
+W1F)إ��LR�.(�X����n,r��k�@qI�Gq�l�Lo(n#���YZ���I6����&amp;EU�=N?Z��ںMm�[�)(���r}3\��U&amp;� �ΨЛ��_���(�?b�ns��b�Qp�R�\,%8Rb���)i)jF�����.(�;\, �����P)إ�+����Q�.1���b�R(�b�R�Ĥ�$
+����!S�d��rHi7�6iA�'��+9nP��4/�ps�������;3��
+ʥxCsZt'Sdv4��-|K�B�z�2�&lt;�?�jh�#�P�KIm2�����?J��!'b凩s���M.�����i\v��
+\R�� ���\aJ(��!�(�����b�WR�K�C�RъP(()RҸ(��KJ.+ع��LR���a ��;�R��7�S�J1J(�R���P)@�q�8
+P)�i\,4
+p�)B�q�h�഻i\,4
+pഠR�Xn)@�b�
+.
+\S�F)\v9qa�Y+ob˺s�&lt;��*��!i�pŘ;�0Q�~Ma�oj�2Z��FY�fnO��g��"�"�"���|�W���ׇU�.ku=�I�(ߡ�b�T������ZM���G�1O�&amp;(�Xn)iqF(�X1KF(�+��b���
+P)�Qp
+p��q�@)@�b�
+W	�]��S��	l 9$���a�h�L��K��$��I�#m���b�fT�Q��J���)��ى���ջ�-�\DO��T㑑Ҏd.VG��@��悝8�K�v8��M��i�wM����k�C#��;��M�&lt;˩]4�s�ϒø&amp;�\}��y?J�O�Wg�J�)!�4�)ٕ���x��5�V
+Hm���oʦgPYN�A��5RE+;I�&lt;ɽ-�f�P�b@�ב���$���Gm �r�2�דXr�#���V�`iv����P��*PM�b�	c
+�H%�/�y�`W�Cqwo(�.%Bp����|�����0&gt;lj�����N�uSC˯�t��MKO�I���a����.)\bb�\R��JZ\R��a(�R�q�m-8-.)\�.)qF)\, R�ZWb�\QHv������-.)q^��6�
+pN�+��b�
+\R�J�a1K�p�R�� �i@�J�aӂӀ���д���Ԯ;NOYέs�I�+2c���Q� rMeV�)G�oCZTgV\�Z��j��6����H2 A��z^�dW+岖��`I�SL��O���62ȡ�����$W���wG.����uIqn�	&lt;LOa 5(�p�r��©k(�(��tz֦�e�G�f"ee$&amp;̫��s�Fih?�&lt;_h��J�
+B����ld�qJz*WWg��fE#$Q4�8TA�c�
+��oI�o��&gt;U�C����
+���i���A�z������9r@���}luӡ�3&amp;�V;H�n��f�Lq���q�z��;X�����\C���� ���ģ�?�X�f�@�q�"��mQ�˹��R�ŌOg�K$NޟyA�G�B=*�l�&amp;�'#B=k�Х)oy �..#O�?/�]3���m��*�{�����5��QS��up�5��jR1M�z�&lt;��F)���+�����Qq�LR���p�����R�� S��S�+��rH�#;�UQ�OaX����s�G,��h� ғ�����I�s	΍Hޘ'�Wk{��	���&lt;��en	����N&amp;�7h�;��l=:��z�:i�Ot��� `',&gt;�Q羚=�7�N��DOˏ���0��T{p�ce���J�4���L�arv�s�+��i����S�+Dk��Ek/����L��"�Y�g�lO&lt;���3�t�G�'U&lt;����S[���Έd�6޹~�juW��Xy.k5s &lt;d ,22*�y`D����s���fM��H�+ػR�xV.�߀��GC��h�-��%�GE����KV�TPJ��w��x�V�~5��ݧ&gt;T���q�\�ո�tǒA\��,�O�[����99��ZqVl�]
+rwH�v������c�'9�֚��I:��ʑ��Ud�-+���%U��4�'��lt�9�:yS.�J������9?�j�&gt;�UB�202+[E��	,�rČF�S�g��}�m\yBX0Ý��2�FrM3K"2ѓ�H"�٢U ��}qT5��^���#����G^�H\͸0�Q�����4RvZ� &gt;;�i��Z�i�iuqM�?1��O?������w{��&amp;B� 6F����sHA�cSЇ9�5T�*r�B�U�+���	�"�93�p�;�s��o5��G =0x��A��DE���:� �r�뎿λ��T�jǟS�s��Fڎ�Q���qK���n@��_Y[� ���?����G29y&amp;)v�$�t�$ؚ��oO4U��-'���O 䪰's �h�-(𴸢��R❶�)\v�\S���+��@���WQ�.;-R������
+����P���&lt;�6҅���K�9F��OJ�0r�J�NK�|�ӂӂ��������0�dĽX�@���Z��):\�w��=y� �VUj8A�t5�MNj/�]&lt;C�2�ɴ�&gt;K`�� ����/����W;p|���UrXc�28��]���_N�M�X�4���`���1���^�lm,�L�Y�ː0�N��vJ�K˜�TU�b{V^���2&amp;s�U �Z���x�&gt;�pꄜ�ɯ康AM�"S�]U�q������A��s\��Ǔ`�8�B ����n��e���2O	eq�(�B�����Hnu���b���"��22}�li�c����,@��=���da�$a��r �O'=»ֽ�}/7d�Q�U-^�[-*���H�pܹFx�Ʊ�M}��4l�:�L.r{�ӌ�^��h�pB7�Gyz���˻0���PC �X���{��d�;z�SI5���'q5�j{J�Ƙ�RO�nª0����#�%w);���g�n�P�`��l;l$2`�(r�P�R�������%|�$eY'���\���h�yq�~Xd@�8���r�L��]ce^y ���].�x����+�N�+�p+
+�f�a���~�e���y7c�����N-�o���,����#�sҺ\W�B�=4��b)�Ti�SȤ�os� S�F)\,%-��(���q�)E S���`�i&lt;�r����*H���Ԋ��8mn�L�^�3��i	?1#$�wɬ=A�#%����������*�*2m��j(MޠŔb W&lt;`�vk�����IOZQO��7He��D ��9'�X�޷1H%X�wQ2�6���Z_$Zs���;�x��HbXG�[''�&amp;��JN�ҌV�7Tr��|;]��*O�/�	1�C�ʦ�T�rR2\�Xm^H�j�x��Zx�8�p�9ߚғz܊���.��5�(,�P�q�1 ?���^�4�&amp;���]���[&amp;���b�RDH�p1yqP: ��c�9$������[k�-��Į~P�
+̓�W�	6�� �j�i#�Y�(���=kH^�[�F�' �~��l�!���&gt;�V�,���L6~X�?R:�4��=��� &lt;�v�7w7)1��^]B�2�S�J�?�&gt;H���$�z�B���	��3�S�;�V}���J��;6����}���{�ْ�w�"��M��%�m�;��5��)k5ݣ ۸�n#�¬&amp;�t�Eb8 �B�XK)�,B��CPC��@\����*;lƦ���������Z�G?�cwi4�p�O�]�mX�H3��ԓi��3w�� l�ӵ5�6Ց8��dd���F�yݺ���z�u��=jK�v���� ���4QF��Uج�s�TP"?��j�6W��g+�S��㧿J[�G�3�pG��t�B�.��JW��;3�� ��RKM�kn�,�IoJ�|_���`����g�aIaL���f�Kkd�I���c �Ei����l�j���L���ۏ����S&amp;���%59��&lt;Ut�����ɍ�n��+��)������b���w�U�3��{��%ܺU����e�����\�:����a1F)h��a1E.(��`��b��KF)q@`Z]� J]���r����y���PZ��c��E	����s�S*�*�q���$�J�N
+�j��^5���0C��w*�6�~���x�R�nd�,b�j��eH�k�i�ݛCR��[HZP��nx՞3��=�P�����9l�F��H�\ U9�� �L�s�W#CB�u[�=
+����P�&amp;��'0Mǚ:�A����k��Km����C�=?
+㯈��(skc��
+�q�.�0�����C5�����TΛ�2�=�� ���/�\Z�-�c� `խ0��V�5��rȧ�"��3��-FV�Q����2[O�C)��`3��x�*��Mr�%�g�g&gt;fq�]=ž�l36�r��� F�N���[I�B��v}�=y�I�EѕM�*���䘔EF��~bGӷz��!_�� �P`9^~����H�a��1H&lt;dzf��'Sp�b��qXAN2����e"}*2��\�C�Fvgّ�Q��j�1Jr�1Q�� &lt;~5�@�W �$�z�9��&lt;|b�V�3�����}�"fh�|�z�=�9���w�?�:��39
+w|��z���V^�9h/�#�b�g�F#��������ms�0#��ps�ZN_�����W8�q�5���jo#�f0�?Ƽ�3�Ml:h�]F�F	؏z���A�8ҩ1��6�U������&amp;�N��x#��V��2sKb힛c$�hH�ȭ�I�u�}���li:}���J���M�9 pLc�ThN�j��r�E.�9�Jm���p���B��,�����}�
+��ZR�����;([Y��#u����q�j�
+b��	�H����cr�0�(�&lt;�K��b�E�9=���]�Wjg��W�a�i�}� �"h��T��\�Í��=?ºLg�Z�S��*v!�h�R��E��"�K��ڴah�!�pZ�j��s(�R�O�(�K�9E˻�����ѝc*�O8�� ˻E���٘��v�G�L���QJ����s{&lt;�G�Ȫ69�c���Ni䴺��B�o��Qʃ��u�&gt;��-엂�kl��x�'�9�뎼�9w�f`8�`�׋78��G�C�{%�R[rN��	 ��C�t:E�jI�D��0&lt;(�n�砪�=���������6GL��?�z���]?H�[���_1� �ӭk
+.~F3���y��X&amp;)&lt;l���+�TWfI��Yv6+[�p������i;���?�a�¬�(�O5���:e�A1� g�� �UNN��:֬!��O"ܻ3�Dd�aޛP�xun�Y���  q���K�Z_�:��Y�����2O �T�is���9H�#�c���� M?�:MSI��r�+��΅��'��ehY�)`�s�n+��4��?W�5շ�Fr�=Ǩ��7:n��pQ��}M��,w3 ۅ��/�e9��N���b��=̪�/��d�������F��[�v��}Ǩ�&amp;��"q�{�4vλD� ��t�)�X�fb?�&amp;�x�G�O�O�����͖4$�Z㱋���x����N�,���etΪ(V)k�Q���SD�������b���
+1������S��0E#��:����V�d�&amp;�t.
+� p� ����� �# v�+�mV�6b.X*���*ͦ�,�l�A���Vj�/��3��#c����EgJ������h�2����� �j7R�G.ٜ�� �g�Ojմ�	6���X[~�}1U��y�4��rI������?�D�FI.MMe-��G0A�?L���h��](w$~_ΦSy`����x��e:���#l#�k��N�4�Բ�y����@= �ҎYZ�Jq���l�����t����U|n�	��Cy=�?,�)�r��� ���g��K`~@�����"pr=z�W1�v�U�ho$���⺌WB��W;1���Q�w&amp;�qK�v�]���1N�g��zv����|�8�&gt;f?�����إ�sK�{"�k;�;��H�Y�IW;]C�kpVg'���6H��f��[��Gz�}r�D��#�?6A&gt;՛�=��֗�)f'w��~�};�?��0C:}��H�g����������&lt;K��^�d0��Z�گ�#��Cj�$� ���c� �\���9�Gwf9bO�}���XJ�F���Oz���Kyl��UHl��?�u�Jҩ$���8�XߵԤ�i"
+�o#��Z���؉���^�:=��(�n���*�w;J�;&lt;8������gL������-H)�2䟕���ۧ��{�q|��#��2;�
+�?��8?Q�����ȁC�&gt;h�z�i�-9���i?�[�Q�p��`27�VV,}���^��H�e� ���`W�+��}�Bʌ���#�ȥ*N�o���OF�T��H��_G�Ff�	]c+�v�&gt;��&lt;v���o�% ?�Osޮ`	rw�6�=�5%���.�`:s�*y�*�b�c�y"��۳���+��n�ogite+$�v�pNF9#q��zV���nTq�8��i�Tm���tl}z5t9�)X���LԹ��-�9*0԰=���9��)&lt;�r���x#�~���� �W8��Q�V���?`���8��	eX�x���Nqq}�yZ��(U~Ҭ���N3]���d�H��	�������d�ulo8�c�ֺ�*5��ůc�����J��f8F�Gc���ـH�I�@�=kK���i��_��W-����sZK�Z��!~I�_���v=��U�x���]��.����fH��]8gi����C�������c^3�P�R�9㏥4�[�pE�y�q.�Dp"$s���pR^A���q�5���]f(U�d9��tV�k��Rm&gt;[���[Z0�A��R����a����7��0Vٶ��L���9Q�����T��/&gt;�qS�W�t��+�-/s�wk_@��&amp;��V��bZ��j�mf�'&lt;� ���ъ�� u�-���$#���+����[�9�&lt;������W}Hi-�T�������D7��&gt;���%�1��Zq�zt��Hy	} ����� Z���[�:&lt;K	l�ӟ� ]��/g��S�������+2Wh� 6�T�
+ʿ��a���&gt;ݸ�u�qmw-Ĥ̮8�?ǚv��rיx���J�b�k�:עi�xlck֌��1�c�=�pa/#�%�#��rOo��Z�&gt;H�[^���v�8�x�U�&amp;��2�M�{��
+�m��v����
+�,����t�o�}�W�dx�����9����+(��G^Ӵ�E����q|͟����-㫙�t��/��׎��1J���2i�]��K�#��u�^)ծYu�?�	��g=�� �{��߭K���h�z}ϋt;`�D�v�K~�?Z�k��&amp;[�.U��# ������d�g�zT���$*��}�]OM�g�������G&lt;fݾd`GJ�	�,dg���=�ۣ��[���0�%�$�@:���O�H����:O��?�f#��۟�ף��t]j@�.�H8�#��LWm'�}e�c⟗�ge���f� XA����u˃�|��.s�\	�������6V4��jC*�/3�רơ"EQ�U �b����Y�?:����;p�6�a�����O&gt;����b]B�r�4�ğC����S��Cy�&amp;7+��;�7�}��� �U��H���*E��ڽ�E���H���0��`w$d�񴑃&gt;�p"��M�L�?��?�J��gvX�k�&gt;"X@��2$j����x�w��zS�N���8@{�f�/�x:������q���
+��h�yv�c�k�t+X�(S%|�?79���u�R�O\�W�i��i�Q��o!8 �����U�l���.|;;����eFU
+�����bVE�+g;rx�e��94MF/5[m��&lt;���s\�ʠH����R�u�T[�z��û8/o�%�+@��g��V爼��ayu�ErQ��m��R0x�~j�%�gT�Lc'ֻIo-&lt;�U�F�cZ('4c)5+�ą�E�q�K��&lt;�A���{�p(�1���s���߯�]׀'H�P,z��$�ڹ�ͩ�Q�c������m�R��p3D֖����n]pz�j���a�d,H �񟨫���1M�U`k�����y�1 I ����P���9�=+GY@5{���8��UP�*��r$�z/c�|9n���&amp;Ә�7�֞+?E�5��հ�\K���Uu�i�R"�R������WLuJ��l��1�1�Tz��p:����Da!xg!e?6}k߱:o9��Sd��&amp;�a��@8���U��&amp;����!���ө/�cKE_|�j��&gt;�D�sMS�+���|U=�L�����H�����+:����;h-���9ld�}q��[	n��0A�b��9K;��������}};ʫ����vMwT��HE�0G*	U�=+&amp;8��,�H� �{5vɿp��#�.n�|�Bo&gt;�جw2ۨ-�5d\����,Ya���?���i�iѳ�!Ð1���k�����ؙ-�S�G q�߿��^J���%tz��4]�Q�	�#�;ҡ�ەX)y8 �f�$ѧ&lt;r1�0� �.�pFq��]?�0�o2Xo�P�$���z��+� ����X��W�ͺ5q�U�6�͝�uÀNGN+��4�Y߇�mFH�4kY��h�����9r�F�qZ��S ,Jɂ �:Ծ�S��07��i�� m�`� �'�p�YGCZ����3N�.1�Q���]���{L+*=�*̸ݴf�&lt;t5�hz����%��yj�1��D�V*�D�=��̤��^9�v���f�w��I	��8�����]���+������}��ǿ�Q�Z��B�[��$_(�p  g�&amp;��n'�0�0 F@�V�+&amp;�88 1^�����b�c�Q�Nk9��3VWg?��tTe@�#�W6R�dB��X�����^���4q�7y��|��8��4�z1D$�)"f�@xq�֣�]bZM��=�[�s�ɴ�(��[��˅&lt;ЬTd`p{
+�dR��l�kg�a#hG?��n�iY��#��a�8 ʹ�B����芹���@[�9�3��+��:�-���]��a'��4�R�PɖP��q]���ۼ~�g������d�F�| 1�݆�oz蒱*I� V�7� �W�����v��`@�J� [6��?*����p�����B^���H�# �D���-eg�~IՕ��y�R����W8w��`v����� ��?��LMhs�#��E��ɿ`&gt;V#�թR%͉g9[r�}kO���V֡�?hu��B{�D�����-��5b�2�m[�G�i�&amp;y���F��f���քp:H%���������N@#�M��Za�;�Z�a�����Pۉ*y��U�Z�g*`
+c^	�
+�&lt;C-��d$L{�lO4���+g��tM��N�����e�ν�{}+�{�d�������W�K��92E��̆X�tnJ�� ^�W�J��U�1tԝζ��/�3Z�Mw,l�q�X�ڦ��ɽ��Q  �9�K�Z�P�凘#�0�7So��0J���U9�[���CQ��C@���*�jH&lt;9�\��$J���ҡ��`���vLc$���ޝ�[�
+ĦM�fT�F�֣�7k�Z�cI|-,Q����T��*��K��A re⩶��7$W�d�V#�U�K�@L�o&amp;�\�����qV��6��(� �W?�?֫\��j�2D�\dն��fT��Ո����Kȵ}2d�7]�t��z�i4�JroC%/as��n�,�g=�����`��(�A?�Բ�)ʑ�5�Z�J�];��T�/�6��=��]+���o�B8���#���g�s��%I�N]�!1Ӑ	��;#�Q���ꋬȷi�K��Nv�VS��}�GU�|���9g#�q�䋽Fv�jh܁w�J�v�H�W{%��Y �8��
+,�� �)y���O�(�Y��G�M�*FrG���v��WkK��M�͔���L��_��W��g������lav�{�6KI�����t�:�F�^�#�FH3�gު��yy�3J�����嵆Ff "��A�W ���:�}�(�\� I=q�UKaTZ��q�(! B@��J�M$��4�\�G�I�50��tL\yd��*��0��`
+��^h�� �_�S6~Ԋ���i���aQ�c��2���s[�}VV�#�#@6��E(�Y
+��wfίo�o6�|B��ן�ʍ�Ҍq�s�����rZ�C��H�?*�P^`�����i$U�hx^��r�j���#�Һպ�[)�$Ub�@n;W��o8v�eP�~5����eV' �tF*T�9�G�(��-�s����f���fUfS�ocְ\�J��ǧ*ލ/�m�n*9��q����WH���{[��:���q�I&lt;{�V-7��d�K�Q��ay¨;I���H�#\��J��5�E�y�Ks�]ڕ��&amp;b3NDr@�Cpپ�E_�䑟z��"͑x�W��3=U�n�+˫�"P�4��� �x�2G�Hc��0�@�[#u#�")]��z ��e��`���J!@��N9�B�tH�%{����ǚ�*%bl�p���3Q	�$;�ǭZ���nC����֜#��b隦	X��s��sS۬��@;�Tu��n�S�z� d�篭M2����z�ֶ4=8��t�%��5��&gt;��L� ��=�
+ɦ�Zi��.c�ᣊ$gfnFI8��_	j^B��(��P���oٮ��d[�ǫ`�?�W��e��Q�$�x,Q�ƚn�%��s�/Qw��+���ZO�Z�Z]�@����ǥy��=��N���E�l�7����`�%H���k�&amp;�O��)�q��swp�l^��N��1�j��$�(�c qɫw�nd�#磹+�3��_����	��� ��� �J�-5�j�܀ %@'�+
+́"t��u�)��=�eǯ���C�Y�����|�U]��kK&amp;��Jm5��x1��d� ���ҷ.�A�X�c����\��o��Mt�JyL���'��?��ɵ�6�m%���a�����Ȯ��X&amp;�&gt;e���C@՝⶙���l�����b�h�n�2��@&lt;�+�޾~�d���a�{����r��X�U�%�m�@^$m�{�GN��+y�Ս���3���=���ڹM^${���n"8�Yu�B�[�t?����_RN��'r�׭g8���������1�����WGi��	�b~{hX��5��
+&lt;��I�?�W/u��0E#�~�n0"��тr1�=&gt;������I+��4�V���Ky&amp;�!a'�G翵dhQ��Zl0Oo-��&amp;FY�ӏ��
+H�kp�&gt;R~RG�֫j^*�Rug��"��+(9�&lt;��-FVz�*��� w��L���D8���8��c�����#G}���Me�)�˺k	�_�?�s�/����(��� f�-'j\İ�U�|D���?(�����-)����وnf4�)�� �8�[���;٥�^0хQ哞k����I��lh�^dAu*�`&amp;$���uNw���1i�ν�R;fR�X�@��j(n�A1���d]I{%����o���&amp;��m��j����k+��׽���t��c+�
+7&gt;���"yn�y�&lt;�f3��QXe�1�w?���P�8���r�.x4)y��Ԋ�H��#�]�,J���={���wo�?���*W�&lt;g�`�VĲ����&gt;�|×q�y'��W�w��Z��2�1�O=*��$��"����6V{i��&gt;k�?�Ʋ^K�I���9���ĥg�ս�ot#�Ԝ��'�R�0 ?���4qj(|�N	���*���T���s8�qf\�\�X�p�8������H�#޴.M�1"l����m:����6{�����b��V97  c֝�WC��~|��|��w�89�̪&amp;\��A��Y�12� ���Ok
++1�x�n�����c�ڛjĀɏ���ZAj�j=���|����&lt;���&gt;`	�+y�hfPm�g?����;F�?($ Oj���ܒ0�A*8�^ �ܨ#��U� ���۵T����JT�,�㪌��uz3Hn�6[&gt;�`0�����	�F)�VI *�{םW�G����`@89�7k?Lڋ+�85w�_z�G*+ά���A�q�U�����j��^� 7z���|Geτ���'���E"�+�!���ec� "������s7�d�V)��s�^�V�&lt;\Ty�B+�"l��jX?����8�j�T��yPH&lt;V��j��H2�\]���j��Jo9�4��D1s��j(j���̟�(E��j[�L`�\
+�$�m*}jeb��$�����ܸ���
+��z�{�i��]n��U`2@�� �#�QE��V*J̠!ul0����r@�5sh�l�5��I3��T�$^��ZE;2�7�t5�nI&amp;@��Gn����O����t�I �?Zꥭ$qղ�MsS� ��N�4&lt;�Bw�SO��j���h��?��7ΏN�J�bE�����:�^d���ıg�KlD�I��K�Z+��Ͼk�:�9�����R'pǧ֤/�@��UC����=ibni�h�D�3�hm����&lt;_g.���c�5���q�M��� FЍ׊���T��	\r8}@o.
+�39��`��G�9+��æ\�`T� �i�&gt;=�:9�s̭��T�q0$	����#����M�p�p�x �J���-^�Y�P��'��Kq"0b����y�G�7 8�4� \���MSOF��ca��?ҫ6������𷿵rM0
+�Ձa�?�FY�9#��jU�m�v)�i��n������iLW@#H�2��5�l��]�ޝ�R&lt;�Nz�-�M�9��'#��V����,.����Eg��7����µtˆ�5f&gt;f8 zzW�Q-���f��e������ r29��'�d�9���''��]E�f�C��a��G8��/BhE�&gt;c*�_�����a*H8 �X���s��fgsc;����s�٬J:�����,u"r1�ϭtr/g�r���r����n�Q�s���46���&gt;�9/߰�zMA�����[�[Fm��v���� Ɵ���e�%c��͜����Ƨ�BDb�)$`� ����b�}j[���?�$�����HƛD���Cd�WMg�*m�����\%�^|��*���V����#��&amp;EE[ܘ۔���ʿ&amp;ͧ�z��^[�Z��wi+D���OZ�4�xq������Z�﴿*)�NX�$q��j�Y�S
+����v�VWv��*�0�( J��薗:�J����BG�*m����	�%��d$�s��Y��쏖Q��sj��JmDҔ[�yɽ�GpG�Z��}#�8 t�R���H�'G�^�A&amp;���q�\�cW�oNa����X~9E��G&amp;�9��n+l^��;* Ǐ�x�5���!��u�m]�����ܐB-�����$�Ү�q��\�u�I�ϭR���-m�8���$d�^�S['���������3*�3)L`pk2�/R�����8���1���nNՓf�=xaC�����2���乽�NI-��F�J�7g�E$�@��+m�FrE�?ۋm&lt;��z�-��PԳ�&amp;��$��N��p})&amp;�����7�X�9�Z-ٞ�ܩ����#�G�qu�3�1;� �ZV�}��O�e�d��8�V���Fl?�z�}�PZM��=�)���i�k��y��,�&lt;ֲ[�:�#	�q�5B[_��B�+�qUr؞WN�$�xb��Jц�O�/$sXv��IVVW|��9=��q��$v@�{����ӥf�&amp;ѫ�Uٿ%Λ#��J��-�p�uɬh��ǹPt'�Ɵq��`�h	6�;�K�+��$�C���9��9�s�֘�i�!��Eow���#kw-����Y_ ���9MO5��&lt;��P�`���?֭��W��C;[ �˝_��:hb��]
+�|��K{Y�i7�yp�iXCh��3�67�d�Z|ѺDY�˾(�hWK�eo��O�ky~l�k����(8\A�����\��' ���+��x�@�l�pv1�h�dδj�F#�B���	�����v�j�y�w�CF����A!N}��JP.�3lN3!�'�O�z�Ѭ��*&lt;�r2��&amp;Cc�j%��]�Qe]�"䃵ԩ�ji1��:TKq,��y��=������ �Ҹk�M#���.W���U�U���֡�O�~8��3�G򮅱��6L����U���{��$@�u���EB��s��,�u��gCb	��:�_�W+u*yң6 ~r:WU�� ȯ~þ��+&gt;�\]\*3��~S���k��I)6����0da��8Z���FmdX~`�a�ǹ��t� �(Je gr��&gt;���5��Z
+��c�;��*�t�3��j���Gv�&amp;�FW&lt;@?Ɯas�[��9P�?x���؍3��*ݝ�;�۵�)z�x��7cZ�\�1gh�Ӧ�մD[l$�L�$)����v��%�K{p���9�@��b�e;�$�֯+����UH
+H�"�[��!]ό�Ң,�PNE_[� ��e�p��U���QI�UU�&gt;�ur&lt;�����j�q�,�z
+dڌ�\,,�"�&gt;���ҏ0K��
+���Ͱ�2�ȱ��%U�@��X��+��=G�EvB[?����19 dWmsR&lt;��S~䌒=)�aK�$�P�F6y��*�Q����K�b(�?�b��_Kw=J�?CCMUh�y�n��f��Ns���M"Vkg�c����ױ��1���Ws�rj�h�uq+g�&lt;���G5����'�hZg�j嵤u��/�m�����*�3Vu%V��Ny�Nq�"��8���G�?���4���!=sMud�=)A��i�pi��c��ҁ��N@m$��Gf^NI9=�����$6=;R�o��$`�@j&gt;��$�"m��c����v�Tі��
+�h�~�)*� �*�ay㿽G���ꗒ[�N��l,j��=j���݁�O�+�.����ĕ��yX��ʱ�@�����5�����Ȁ�
+Ec�,VR]���ċ�Oa�ZI��i(�ݲ��	�ڗg`F3ץ?N��4��m-����9�N�cBkmb�O%�*d�=��'ӔD�T��xϷ�C�8���ƍ){�ƽ���1�a�ڴ�cL�&lt;1�qU���+X���N�o�޺$,�r�?�8�h���ec�yWC�I&gt;ㆍ79ZԚ��RQS`�K6 ����\Y���R�p�N&amp;3��yZ�HsY��Otv����Y�B�l��&gt;Ʃ��X䕠�� �O�K���z��*f۵�⣲5��42�:� ~��3�*V&amp;���WG��ۉ����cR�����Y^A#Ơ��Q-�&amp;�0T�I�ݏ;7���8Zi��o�tf�[���}V�;�7�$����U�4�k=N��'P0#q;�c� �վ�︱p+�#��]�;'q�uyh,JN�g�ۄ��{�O�k.b��1��֒|���f����n[�;���؞������R!�[��Mm��])� ?v��z��1&lt;��� Ѝo��9�� �rc��s[�,��Ү7ד�5�����mη|�ծ��2_�
+���荋\�k�'����k(�?���a�ϵl[KE|�sނ�`��!�qʏ�j�2~����� �	�'�2�S�-�^c���&gt;��u}��`��;������k� �� ��� �Mv�G?�&amp;]�%+�=?����@�W��@P���_�+2?g' ���*=ךZ�r���VՈN��x�D�3�#\7��8�j����C}�ڬ����Z�2ެAFĝ�B��uRI	��pB sߊ%�#����X^��|�9�����k-� h �b�2G�iڈW����z}�N�r�Jm��Jo������ʑ�O+�R��K����ER��O9�?ʣ2�Q��A1��=۠���t�"m�ݻ��5Y}��k��.a������ߕ^7W����G�R�F�����0v�L�w,&gt;]�Nі�^\��3��f���Zv�oZ�'+�U�##���ЮF��q��3�ps�2+?YS� ո\��x=�C�pkm���gڟD�-j���2�l}��8c� ��W6��9m��^��$�"�;�$��T��B��K�  WLQ�&amp;:��H�`������Η�n�m/�YB��G�Sx�� v6�q��_��Am3�#��A�8�JƷ��ZZ���m���Τ�ebCd��TW���*-�����j�p���hW���3ɪ�w��r�Fɮj��w��Mr�ì���ׅB��t�W�� �&lt;w�?�gZ\��n#rF�WR�=���8�8���[�X�^䗸H�����Q��v�,��9�
+�t���bFL��wr�v8k�;T;���h�J�Մ��B�x$~�����:��[��ⶴi��?�D�C�U�/��&gt;��$�J��cr������S�oC̭�+&lt;�*��3ю@�����T�|g=�C.�Sn%h�%
+/#뜊��,�X�B�7��zp+J�^����ܶ�(2:T�f��E�&gt;��-b~�r���V���0�K�F��u�Ҋ5v*��v1 %���5�a&amp;�v\� ��4�������LJ�8SR���eY�$;�Ӝf�V��+���(�T9��������C�=�X+��u*�y&amp;U[��xx�h��jOq&lt;,;Fڣqa��:��d7��BcP� NG�z~U})����,@# zt��eL��O§��E��x�M�� 7r�Õ�*4�&gt;��e��F��&lt;ը�����##�&gt;�ׇ�È֡�.�}�H��V�_6EU�����`j����n�m��-�9� hW�O�^���|,���2[*s���*�����j�&gt;���5gA�;r3'���ڍ�1;J�y���{�����P_#F�猏��ZW�+�]�a��T(?�]D͚�O�;�t-�D��`��� A\?��]c	�L���
+�$� h�u�RW��&lt;����x��ޔܱ�8����w$�J�!��������@eV`�s�EV2�z�K�Y��(=�i[PRE��fT��O��d
+C)u�I��}'���5*�,���k�W2OB���K�eF��`��q�|�0��5J=M�F��^�ڝ��m�g��-6�v�j��g`�������q�3|�JA�����q�9�lC�����,���ƣ�m�^Dϯ�J�Ek��+�2&gt;����E�@ўB��?��YN��S)66��V�&lt;�ũ��|�$�cQ&amp;��$���m����&lt;��^Z���@�����hRL��W���+5��c��Q��ؒ�$�p~��o&gt;��M�Q��3�YM��٤v�)��O�6~��jh�Ў� g���Q\�D�TdVힴ��d�C;$��@FTzdU�i"%W�:&gt;!��ҵf*�Ub#o�T���z�K����V���V1	�U�����4�?P���{'���$���s���YRq����X��$Q"ٌ�ިG�^xo�*֗�ܵ�o�yI�X���U"b˻�NN}ȮI]nt�̍]�����\�5e��8�4��8���]F�&gt;�� g�5y��5Y-�	m����F@ϥt�Rr|���iE\��RH��F3�T��K�$s!U2Fޜ�~��o$�̧y�;HA�c��V/���h�tH��#������n�f�� B.#֮��ʠ�ST��b0A�b'�.2�}�ݫ͎Ǻ�/�I��� ?�k�Q�u+n�6��Q�75j�6n��� �_���%��.ʂ�2H�[��e(�k����Zu9��:z�;?*��ĀjW$�%AǮ곧xdI	���X��Ϯ}*������l���0`X�v�ZI�x�M�d2!��A��N�Rͮ�&lt;h^4Q����kqR��7�t�ܜ�O�?O³�8"vo8�u#?�kO��|�rn-\�p�!uHr�^;���^�mrI����T���侍8�RO��j���(�v��Nj�,��9%�eD"a�=qڻ=H��"n�g� eƩ,0nȎ1�U��l+�m�S�N̔�6'��+@D���2k*�]�)',
+ʹ9��&gt;�$(�"��2������;u��1&lt;3H6��'�h�n�d�Hǝ&lt;�! ��r�Rλ4��A��L�52��q����8�I/v�?{�5Ξ�SZ�&lt;~R�ћ�}Pp�w�ƶa�3"����3�R\iJ����8��t&amp;Av��� g u��E	2|�0���*���m@�/��y�*�QU\��x���C�#�gV�&gt;�d�+�sZ�H"��8�+.��L�P�$z��������8�ObSUA���y&amp;+"*ħs�4�}��p�P=�ƈ�&gt;�V$����I��F}:}jݬ�kvS�yV� t&gt;�A%Bd���ɫv���"S��+kmO�G3p��% ��c.U��'��[��W' sU4��nӦo��R�VF$&gt;3��s�V�:)ɸ\e���� 	�ZJ�
+΁ݎ��e&amp;R��Fx�e$��C��V^&lt;d�AUs�H𫗀�3�UuL+�\��gk���.�X�2�'��13̨��eE ��@o^j֔��5�u6�hzt�I��/dGt;���'�mj���sϬ�E�u�@ƃ�6�⡖�((�&gt;܇R�k��κ$����RO�Xڬ-o2�P2��9�o�^�Ee��4���ޅ� x#�%�Na mE��O֣T&gt;Q��O��l�9
+�9�9��~_c�tS���~��n#,d\�q������$��Ð:c�Ea*y�� fvV m��&amp;9�%����:�%(�Q�l�tLqګ�1�����*�܏�;����S���	A3G���zW�G����YE�y[O6�uԬ(lG\����\�D�w�}*�\��Q�f,y��1U��#dax�g]I=Y���	el�3K������z7���_,7��횙v� 7z�e�J�%.i 1,x'��U�5G���������I��.G]Ƭi����	?觌z\�����?��z#����Qj�F�`&amp;"�itr�eb�\�Qj����FI��c99�����FT�?֯���j�#�����_�r���	��ծ2O��"�oppF~��u��U����{�*�l��F�}�Ez�����\���x��9�9��0pO֚���*}޿�H�����Y�R�5R�V�3~킃�$��&lt;IQ���4п���;���
+�[#���*  ��[���V��� �3&lt;�lg�{T��g�,3�%q�уN�f�`��0��=j�i��d�c l���?�=?
+穊Qi�7���s��NI�S#ʠ��Fz��hmQ#�-��o�b���߯Lּz�2&amp;�'�D2=�R�*r���Fxݿ�u�%L�&amp;=?x���ֱ�U���5|�dJ�0?A�V�J6��01�j�ي(\2���W�BKUc�5g�=[����xۣzF�n zz{V7���H ���NI�7c]�0E���&lt;��y�����B\�`U4iYI�*G8�k��c�l��Ml�Ej&amp;�@&lt;��VE�i&amp;
+
+.�G�x]\�%�eɺ �1�m�SAu4�������֩��E�� �=��?
+�8&gt;]ʜ�6�Oj�QS՜��f�:ܑ@U�a�@�Q}Vf��W,�����b$$޵�i����. ���#���v��`֑�bLj�h$���Q9�dH$7�WM�4s[E"�� �N+��&lt;7}�i��淒#(����RA=����xn���]Hy���g^�RLޅI6�΃J�WxeVO��?��BϬM$]��Nq^�����6������x�o2���8�`����Ď��0��h���sV���J��:)�kA����,��b��PA�MU�O��͸o� ����,�)��e\+���@{�j�pM����w6�d�oQV�c&amp;���x�U^�Q!��jfP������+�KC�oQ`o.��s��v�x�9�5�r����gh��5m[�M"�ℰ��9�|IaƩ�r~�W�H��u)(����rvG�[߸�O2S�A��$g'�U��=�A Y�?��-���^F+������e!���ӵM&amp;���F�B��8���Iϙ!�5V�KH�o���\�"#X�&lt;�l���(�޹)$���q$�L�F��G���؍��
+�'��t8Aq!���ӅJ����p��~�x�.pg^�� �V#��
+0�g�j��8����wgQ�5�?�u��x��	c�� JW��e(�l���t�E�&lt;�����Z$�+mox���"�?��Y�����f��N�Ԛ&amp;��x��d��Á�cZr��[N�I�ٞ�,���'����ꑛ}"��!U2s�OO¡��C��_�d�B~V��qX��SϦO*�&lt;r0�"������E�n	G�etX����yn� ��0SET*�� z�
+�u�,� �����Kw+E�6`3�\q�^�&amp;�3��i�:�.��&lt;*�1�I�MM+�"��r~���ۗ��E��q����i��i���Y�[B���5+�6����=��o$�-���7
+H��Z���E~@�w�Ǿ��%܌l!'�z���槕����|���8�	&gt;���&amp;�������ұ��n�C�hi�,�8.�S����6ŭ��J���5�����)�b1(/L�}�� ��$h�ϟ��j�G4�h[����S�~�j[�ry�W����ƷR�9��cr�&lt;kR�2X4�9%����Jƥ��i�̮q�|���S��|�~&amp;�J��� ��s�]i� �ҕ�����|��~l��}EUʇq�ug[�E��:�&lt;�4V��+�d��*���f%&gt;n�tX����/��n�d����9��z������q�H甹esȵi��򧉣�uV#����q]�@� ��a�wʜ����)
+s���A\�����4�VWKk����K	U��.���K�����f5h7d���8��%^�[�w�����e�Dm��x�Ƕ+���ǟVG���T���r��c�Z�mq-�"Ie2�pK�{�Y47䕣�@���/�zM��{v�"	#20�v�s��VK�FeyZ�|G1��5���WjqA�*�ȫ�7sɫ����ҩ�ֵ	S��y�喋� ��u�SN*Q�v��ɭKlӈ��ّ�'��Ԑ��̻
+���&lt;� �T��h�9���x��n#!��wb�c4�(�v� g���qWh�R�ܲ\�^�(Kk{�U��L���0�&gt;ե��7ٚt��}��n��ⷽ���+9Y��H�IE̿"��E�$v��YJ�To�A⺋���m�U����z�\�˘H�'�=�)�Rz��SQNƮ��M~��Ȥ�`涤���u���Ww��!�����o@�n�5���B�,n��]��p�{[��+�E©z�&amp;�U�f��oc��?��ܚ����}�8B�����ӷZ�3��խ"w��L��H@�8��7f�!m��ѤNO*�&gt;�#i�;�M)E��/�q��0k���|ܫ����  ��+��o�㍭o�f�e�;T1�0ǟOZ蒒W��M$��m�$�я�1Ê���H�?ΥF�GҲ����6����]�d!�xg�D�tK�H�N|��6��t�(a�b�&amp;�8��F��9'���7:������8;@�iW�vue��ҁ�S�y4V�~��ֶ�㿍[Z2"�K�8�+걕�'�~u��U]����d�ʲ�hOy��Bص%����&lt;�FG�)��&amp;�]&amp;?��G8�HN��6�,ˉT��0�95���1^����xGK0��^k{;"�� e�/၌�z�����&amp;�9�,+8C��a5{�m�0l�)�U�A�kkyS6�����7�������Ѹt�&amp;
+�S��b�����(�q����Ǩ[���t �O��?Jwۭ�[�@=|��?�m�_��9���
+�H���%������l�y��i�`��H����q�?��H�[����V[���0�8�FA=��}낞?�kvtJ�����J��dm���κ�=*}��e���p}�� �����e^bm&gt;\mr7��q����Kx���\sH�q�1��q]M�E��F���G,�U�)���v'�����[��q�*��������W��n����627�H�v�^�Hm0�M�&lt;�!��u�JҩG�̿k�����ooo *��*ž�w�S\Z�z�����b�DQ"!(2	�:g�N�m ��┩UA&gt;��,\�-&gt;d��K�9{�[;i,l�D*w����m��F�l�6�e
+é�֋�v���S��R�������O�J�s�觊VJoo��;�t��lq�-���g+�e��r�R+�YD�dD���9�m&lt;�V�SL@0���q��X̂�U��vPGL��V3��ڜ\SL����H�@�W��,������ q�Wc������r���MV�x/�q ���C~vs�K�]�iŌ�@^;� +� c�U�[��e�����'��	ZG���8&lt;�r�@�W[���7$/��[�J�GJ�����ڸ�Ҫô�+c��x����q�I�U�E�z�E�%��m�6��{�Vg�$v�`���2��!PN��b��8N�o�5�����������]����:�S�kwbd??�i`8 )��������ϭ4^Y�̢h�|Mv\��;\�d ړ0�ɟ�UTc�dg���hlZ(E�������3���m��L����*U�hʯ���*�A������͌c��|�v4��ʗ�~�&amp;��+.�1&lt;��Y�Aϡ��-�fw�(�T�|�5��|�JΨ��^��A��5�s�4�d��v�	����n�%���4��`d����Q�^ ��H����#f����d�c���&amp;�m�j���c"���9&lt;��
+�A���=�F4l�3� _+�@ϩ�!�6-�0R��#�y5��7&lt;豅�2� ��+�[���byV5��}NE4����ekr�Ƞ���V�Ņ�����'�����&gt;���v���VF �]$����f`@�VR�Y�u&lt;��O�,�+�]ŀ��{�T�%��bl�X���+R&gt;-��&gt;���5NHɆ��c{c'�Ҵ�Fՙ1�fٻ�� d�E���3!�h�R��i��X[/�a2K2��Ia ��ڮY���g�2zb��������I���t v�+:�'�cTP۾^N{V��� �}�P��U���{
+�$H�*��;��&lt;�U�^3�9f (�ZQ���~Uy$G��58�����Y�ظ��&gt;�n��[{dd~3ط��8�D�23� �MX�-�&lt;]$�ec����`Г,6�s�&gt;���i��҄o	z�t���i�?�zϔ���	� �u�1�Ya�pG��Qk�]�ِ��������}\���|Q�Mvb쥶����k!p;��Y�L��=�q��+�#&amp;��#H��sZ���/BX�������]����C�N���f��S�F&gt;���B��򬛸.,�]�Nc��.0�������󥾦ƽ�[�U_Iյr�O�4��&gt;���]SQ�K˩�� �r@��g޲�K�-m�G��㞟�X���E�3�2=�g6���T�U45⑝0��MK5ާl�%��40�Ɋ7a�������NY��@��hą��s�D��}YsU	%T��c��:����y�F�2�K�9#�S��j�cP	�T]?M1��ۄ$�lҸ_[[��v��E�)�jrO�L�)+ ����Y�ׂk��ḹ�գ��ef)����s�\���w&gt;�b�BH�bw�2�NGJƵ(զ�=�S�C+P�o�����$j!m��נ�
+�/
+��%O5�x�U���|�i��@�w1O3?��{�f��#��j���w*����?����,�)�c���פ*i6�w�fbI̿��4Н�����9�+��iT�y�w�Q�����})Ԅ\��na�:��BN&gt;�����y��#��B���h�I�Qԅ9S�Z������=�PT��@=�Z�$�R������(r0Io��U�-2-&gt;�jM&lt;��:���${�Yw�ޛn����ɂ&lt;���ZVھ��i����^��$'�?�Z�rV��d�8�$3O,���,}�sI�'&lt;�U���*�R	���70O*��OL����������=���w&lt;s��lN��C���Q���`t(3_?,&lt;������� ������!�l�R�`�]�+8��A��֬�c�ҷQ���x㚸�j5v�C�ܲ��w�����B˻�_v8"�5SU[@�Z"s�F����jJ��Y����A5�K	9�$�FN�b�Β]V��.�\H�bQw��zA{̱%�^33aZ5(98�� ��,������������A��wVݨ�p3׸�ϩ���!U���χ��I�U�#�o����M���}7'#�~��;nT��\1*�F	��ZPi���"�j����y��_S�0]�L�g?#+�)D���zqU�\�� G�\e�8\?��=}�Я��h��K�'�8=
+�n��7ݝw�%��iSm��@ë��V�Ϋ5�A���4?��� ^��E���!�0q��A�ӥZ���M��3luB�;x�q�[Ru)�X�A��3�;�(��C#�9'�j9��#��wp�Ef2�;��+���=����j2$D ���$=�7�wJSΞ]��]���aEJ7��9�Eٝǉ���H �!pIe��q՚-́�v珯8�ָ�-'Ty�{����V��7�1hy�wd�^{W5JpN�#zRrWg[�j�Tj�m�7F���ԁ���� �&amp;�i�Ga�\�Q�Et�kk�i�}���3���;g�Z˹����,��,�F��&gt;�ι�(.���.�{�kv��wr+8�h�)"��b��+���t5���\�8{{�P���v V��aF͝���׻M)&gt;i�!`%��J �u?�q�������ے1]��!i��FZ��ĩ�p��3�Ts���[ғ��|M�=��b�c�J���wrrZ�����:s�{Tf�^E9�Xw�I$�sύG�;�U�p���&lt;�qTm��&lt;�w;�rF2�x1=�m�ƙBɴc��� 	��+���)���^q��Zײ�nT/@y��a�H���,�E孰��5�M�J�kX�K�F-��i���P�'�5r����fv�==+WO����L��(I��]3��rG��1!�]=����㿷�\{�������9 ε�&lt;&gt;��&lt;��M�
+�'�� ת��7��������Dq4�ja�دc��H�P�sRj3�	 ���zu���{����?�#'vzr+����5ޛ�	l�l`x���ִ��yy.Vr��O�&lt;.I))��g�[���C��3ʱ� �`c߇5����Cđ���)��qY��(i�F�
+T�p�1�}�	�u&gt;��f������F|���݌aO8�b�4:�Z�5��W&gt;iQ��r*e��/eP����۷m�⦻�-m�ES%���b�~a�'5�)s;r��F���oP�&lt;G��-��Ǘ�򢫏ǽ%���5�@�m.~l���޴���D��3��pN6�1�K�)n�'�T��k�jqH�Ɲ�+X�n����א���������%�Ε�,�j�v��dc�G=�U���F{v��J��$�1%�Gn�sږ��k����b,
+���Yӆ'�)U������� ��i"Qq#`/$�չ���t1б{�����ȥ�7���E&gt;���_��r��"�ɰc;���]����*$��h��� ���1�jM:]��|�?�`-�r�v�3 �3������cl1�x5���UaF�rgG۰�8Z��@�VB�sǦy�gT�I��.J6��RiŴy��.nD^v��s���rIٖ�䮍5&amp;YW,79��}=�Ѻ�H�r�e�y�L��ȪĄBs�=3�Oo�X�%�カ��$VR�6Ɯ���W����؂e�����8�z��d�I@ǎy������&amp;���m� L������ŕȓ&gt;S�ƫNjˡ����a$�K2�L�&lt;9uhZ�k`�j��#����}:V����'�a��{�D��Qq��]�8'�/ ִ���S*�2��B}A��Da��C�)�r�Gj��yn
+�+�I��H4����y����Q� �?ʰ�5$ksiso�a�`J�$rr?�kB�R2pEf?��9��X���|� a]�^7&lt;��"����H�W!�&lt;Μ}9�c��A��܁�2�kߖ*��_�Z�����{�w5�.�$Pn���xT,0�)�(��8��\�m^����B&lt;��j�*�%O�=���R+M:Eܖq��c� q׾*{�(SLo����w�*A������9ofL�R�:��&amp;�x�@d��&gt;��j�u�g��IrK�r ��a�k�*F�Ȳ�p��~O5�n\U�'���^:�\p��ە� �3T�W-��]��R�%��*z֢'���i;; X�А�Nx�k5g����TyDH���Oq��a�7��j��#*�&amp;㎻{���Z�Մ�������F��x`�oڮ�"�X3�*����1wp��m�����&lt;�z,���Hɷz�6񒣠&gt;� η������s
+	Fr!���ߊ�7�^3Z���[n���H�}�evx?J�T��h��y�`'ڻ׎?���N��CI�C�	�2 ,�����;�ɻ�^��5�S)J���7T���k��4�#�ؼŌ�~Y�.�V�L��l�~`GG_������"��d�1%T���q\���g�v$����F�g�QjsՒK�z~����2�9;����5gKKu�"!���&amp;Fb]����:y(�m�d�W��n-�K��-�X.9ºeNJ6_��Z���h��0��%9��W&lt;;%�mW6V�G�C�j+r��B2x���"���A�iF��υ���R�ܩ��������|�ҪO-P�&amp;-�(}?J�5�3���	���f�5cO�ZZ��,��Fy�:T��Z�4������5C���:Z�б��fo.��`�8��?�9�M �7_�=Ç\���N��Gr�聂�v� s�i b�����\2!a�ϖ��q]ѥJ�T��_��&lt;�8|H���&gt;t��A����H���6�N��#��"��~�k�o:�0�	oH�9���֌�h�Q���V����Լ%5�V~�Ƥ������y!X���C��㔷���F"%�2�S�#�@&amp;�ͅ���p(?*�I&gt;�@��U.�ƃgM�v�H��#���{����+�/�$D�O�����Ubr)�Wh����+�W$Mt��jc&lt;�p����M�FKG���6t��ne��
+��4e����������&amp;�,�������� �u�e��\J��8�~�� ʄ:��1 y@Ú�٥�6澈ڏ�7�r��rȾ\
+�s��,z�=��\�[C8;���{��_YI�����l��ty��;��5��;c�;�i؆fB�gs��+W(s���M�n)���mP�؈��.H �ڹ�;G���K��k{��ٴW��~_�zG�.Λ��e�PDN�������1��n�ܱ0Fs�62[���hɸؙR�?9����LH��I��2	#�}��k�����1����(�C)��䟮J���kT��.�=��P	��\]Kw�2&lt;�d�ݹ��kSt��KS���ZX�s�rEr��7j&gt;q�$s׏�]�����$u�ã{{��f�2I�Gg&gt;l.2}�3���4�id�b�'�p&gt;�Tn	a���"��v4{Hb����}m����A�p0��%;X�m��i��!�vUV=H8�ך�O0�$�pBy�1�͞����Cok`~�on�H���q���9�/��Hh�!�ȷ9�(�RJ�d��m8*��jd�ik����Z�TB�����;���Ю�Ԓ���5��8��C���.uY���&gt;À�b��{U+�����|� `�� �I���������z�U�F����,��V�I�A�,�V��9d��Hܛ�MQ��p����!W�K��d�eiڼx��lw�sj������?V&lt;Koj�j�Ē~����J�"	)t�ɽFTd2��k���Z����$l�Ԯ0�N�nF�+�6�ct�bYP�ݸ W�9�����m+}�:���[����`��$q��֮�my�zf�*p��y��j�0|�R�(��j]�&lt;��^0y�]#UK�0�d�u� N;�u5`pp�@&gt;�)|��
+�Ly۞H�g,Dd��\�;�ŧ�eib��N�A��� U�/��,H�ݸc�Ƣv����)#�G! '�� J�k�Ը��-��{|��0~^?_Ʋu{+��"�.G�p� A����~��	#��#v�Kgy����8�H�5�IK�WJZױI�5�&amp;BA��T�z�]H0AS�+cWӢ���P������z~=?*�#����$�����
+�T�Uy���)k����ck"�M�x�êگ)g��k�:�O�:�BJ�czݶ�LQ��+:Мl�dƧ4�ӯ��Q�����Π�Lj0?Q\���\Gwr�k�fmv&lt;��q��­�,��4A�lc�V��H�� �*䒄}=�ׂ��SG�ٜU��4y�����&gt;=2qU��G�ى��������g9?ηev/���2����&lt;�zQq��� v�r+��X�]/��t�� ��+h¨�p71���j9�.�rWiܠ��J�$Ut`�yTn�Q�l�A?;���������^��E�-d�k��x�$�0}��T%ż��X��a��T��5mD3���n�B�v�����Ǫ��&amp;70+��AJ��0S�N�d�5E���.@�A q��{������m�U�%��9#�Z�ZT��p��K�U�I `��}*������YY��D�$z���X�B��ڤޖ54��6�cF������֯�pX����kYgҼ�+r;d��� =�.���P	�`_'o�������H������M�}IV6��j7a��ȰHF y\���95{J���BI=��c��;��R:օց~�&lt;�O�`|�p+H�#79�E�r�	r���Q%�r����61��Ҵ�4�.o�#�v���US�^+ʟ���e���!~{�x~�)��c��X�Eʳ���ӽT���L�F����?��I���X�-�F�͑�CW��[�*k��ӛjL�m���f��#�j�V�_��Ks�ˡ
+�w��}�6��j�&gt;� �y!s�as�&gt;��&gt;����"��'��߮�j��6t��6������g3��]���[Ҭ��@ϰ�az��� I�ؼ�Dd*�;�sۀ*���q*�r�XH5R������ ȟk�Q�}q4���s,%gVbI�����H/�HX�@`H��[��$_5�ǒ#�zӢЯ�f���w8��ɬ�)r�I~fWj\�\ފ�4�T��yX&lt;�@Z���:�M�朁@-���� v�ﶽ�R�$���{�նk��p_2�ۃa���W,=
+q�ۿt8�G��7u�Y��i��N[�qԒ1ZZL�_�6l�TB�6;f�_[$�΅��,&gt;SN������ ��H
+z��qTT9"��C����n,�y��n��n$��Q��J�	�V�	�Iq ?&gt;�zs�[���r|�����J�� o�Z��T�X]cU;��JG��"�w�l��E�0l4��LUA�q��6����6�^�9�ը^9���#v�FGQR��y�Y�R�"&lt;�� �֜���E*pQ�8y�Gi٣!� g��P�w� ��0	P�������+Ź}��	�V��'���K� Y��b�f�s���:� Қ�Ng���Y���9K0pŁ�=���We���"=ߝ�rP�9� "�K�j�[��&amp;aUT��5vь�lg�\�K��&gt;�&lt;4k�U�iJ�;3I�k5�y[�HR�&amp;���0�B	$����T^����/���.O�G�jk;��ฉJ���zWThӃVF��W�k��i�%�z?ʺ_3�1�~lk)fo�*�s\�8 �cҬZj/���� �(~z�w&gt;��K���%���XūH��$ aS��ǔe�09��N��u(��A0$���N��do�*�Ү���ޡ'Р"��f�:�u����h��)(=C��Y��$Em�GG4�@�"�f�M��!r��t�P�n&amp;�G&lt;��s��BI[�Ǻ��k�|��s�A�+�����U�y0�*�6?Y�wl��$�m�����l6A_
+:g"���"J ��0&amp;BN+�Aʅ	(�9�U�z��q��=+�p�w��'$�mɭ�,����n1��T^"��W��LX�y�L�=Oֳn�m�J��Frv��Β�"*�%��f�:Vj������I�85�:]&gt;x��~�#&lt;n����j���o�&gt;[q� �?N���v����f�i�9�5����h�s��#��sۀ*%U�-7��kil�� r1;q�u֪�Pe��3n�Ҵ�=�ڭ��wrR퍠�ҫMgn��#$�˷q�©�Fz� �S*��K��d�5��3b�+H���s�z�SĀ���}���I��2A����.p#����MFZ�:�l����ݡ��c�����PJV8�;N&lt;��� �"�����1�� �θ�c���;W�����3��hܗS�U���~�6��U�~���Y��殩?������OJz".�����t=���&lt;~��D]��˜�� J�U�2�����5��
+�ĳ9�N�S��E�l���ƛ-�wH��'�Y	%���&lt;�^A%���x#�-�3�E��|R�kK�лNH�b��1�9��-5�R�s�������X��0�h�wm�\{�Y�ڬ���!� �28�j�JH�;�����E��A���&lt;��5��^l����gq��&gt;���#߽s���8E�	rIoCV�h�s���e���4�w��+\Z��w@�~]�#�Ji��|�z|��D����@�֐�m���
+�Q�K���ӱR�Sn�t�$1�Ri �6�l��qWفdӊ��P�ɑA�HP3�p��d��=V�^���7������L~��S}b�F�Y�1&gt;j�c��9o��ظ�ȭ�eOҩ�V��)%FȌ9\��Jj*��]�����ExV?�7P��6����k{-�WN2A�#~��m�&gt;���g��D�h�x3����6�0k��@'���满��8�L���}?[�UE�NJ3�d?����'T�d֊�/IX�?���}żW�"D�2 �:`��Y�ēA�Q���b9b?6��7ʭ��Ԫ�V�B�i&lt;(�1$}�;�u��n��m_���-��l���21�G��KM!gb��O�uC_{dK�KCz��ˠ�Nz��ϕ�L0O�t�&gt;#Y��q�;�l���s�#�'��R���k
+���ݟ| ��oe� ��ַܓ� �'�����K"2����}�&gt;�C�^��-g�ۑ�2���&lt;ִ�u�B��%d:I�3�a����K�Z�����C[���-�����5���J;���&gt;�q]τ.$[�� �m����J�t�)�I�hk��&gt;�m�ETr���u�)n`F�-!3�6,�f�J�H�|Wuo�X\�_4�"rVh�g&lt;�ЃT�5��#f2�.��� s�u�I��7�e���{-��Kx�Dx�qf]��9S��޶4}+W�ͭ���C��2AU�9�·���*d�V�R푿kX�� -CH��(?ΎiKa�}��1�\l2�F�'�� ����m5�D����F:��&lt;F��D��m� �� �V�������%���*V���s�������*A�z�5R�&amp;����Ð
+'&lt;g�ZKd��#������~nM�egPq0#��4��ĸ'�^��ւ(�$,v�� O׮?
+����l��-&amp;2����b,��gB�)��_ʭ��B�8'�pG�+ZsjJ슐\�Ɲ���X�q̃�TZ�1�H&amp;�IX�"?����[&lt;��R\�l��1���IsG�J��W��څ��3@�;! �U�y܀�f��j���I�~�D�Җ;Ó�q�j�/#�yd�a�w��g����y�Ֆc_:p$�NrŻr;WMicj#xLFC��瞕�A+��3���r��
+׷��sXb��*˹X���5X��^�u(�sX�`���E�*�9�T��^�5nH.�/�G��n�ҹ���ߺ�1N��x_^ �L��B�sOp�ܷ����{���XD�:9��|��ޛr��ĩ�-�C��S-u����ᑉ%����^՛}uqxc
+��/ܔ��{Vl&gt;hWFBѓ�8��t*0�omI�ܬβOydZ���FG�� ��M �%����a (A�q����V�Y`�t.ۉ�=������c����R�F�EN��d�np��m��ۆ&gt;��T��
+Ȁ62���E{+�����[����o8*�w� ��8=A��x�)Y�ַ�+2�r2��#���7�R�$�z�o��Y����7r��a1�}qY���uslD����28`'h�M���U/g{��^�]�c��L�����W�r!��n��:U7�E��	S��EsES���k̙%��tƑ�a�Rzc�j�V�d,Tc5&lt;�frDn{���*E�_��,��s�]�kc(�Kb�����&gt;�sO\ d ���u��\����qT��_%&gt;v�%���)3���#��U�L��T�CVei1��F@�Y�;4������t�液�����yC�t���Z3�q�;�i5[���v�*��(~�J���("Y�Y�8��F�rg�\苷�.����Un�Ѥ%t�CQ���`�ͣs� v��Qb~�%�ڧh��c!RT{Wf�c�2L�+n�0#f�y/�Cɪiao�M�s��x�����)�GTd�7+��:�ְ��.%s��h@/���9_��nln������B���S&amp;��ĸKX�q�1bO�?Q�Zj[B����+���1 � �±x�v+�OS�vk[("�Ud t��ZH����i�y�m?�Hd7"PŐ�1�Z�e���P]�1�$�u)�^�I��d�"�exZB�����㚍�g�0
+ǌ�� �+th�I��?܌��ƭ.�jzC?��o���5$ݎbd�(�fGg��G�sWt�:i�Ӯ.-b�A*�\*����kv=�1��x�99�MXK+`2-�]�� �k	c��wr��Ɯ�[{��-�s�+�6.���Agv�W�UAE\�'h�T��\�.;��wK�-�=� ���`pɻ����j~@݂��jC���H!���D�M�r-��8�J� Z��_��3����;h�"�tM�9O�8�}+;M���x�� `7#J�)V�Ь2%0�a4���7w̒�z����*��/�&amp;R�ެ�2C
+��o������^h���g�f%����Ǌ�e�ƞ)�}5���l� 8#�kK�&amp;�FS�9lrh��β �W/�y���e ���ҵυ�y0.�v�&gt;L�G'�@��H�&gt;y&lt;��NLzz�W��I�#J�4��$Pʭ��cm��8%~��h;BZ(�����rGc���˵���nn��W&amp;TC���Ҷ�x��Q[e�rV%`�� t�ԧSX�����!Y"���, �5~�@��IQ!��% �A�GioxV7x���рpx�]6��l#I!����9�n)6��t��kX���k��$�B20*z�_�0�&amp;�5c�Q�}r�{3�m�FNF�߅f=�Kn�$R��d��W�R1sw�rs;�����1^,1��Dc��g�=��U,w`�����gs��2�#c����?*������VBG#��#�J�xh;8lt*���nH� .IN� �qJ�Q�+4J��	ɴ��5N	����Q=�"�����b�2;�W:���%v�'������l� �m��8�^��6���Q��g�d�r���$�mG�F�9W��1���f� h�y`p���9��ں�RMߖ�*N��*jzDzQ�淸�vP�H?�T�Ԟ�	c�s��ۓ�Win%׬VH�a`���N:�}*�Eig��7�HT��$�v5�
+�O��&amp;T*E��]I��c�� ��h���+�n-med_��8�{����Sr��h�od����2;�t�q#���[ݘ�$vܮ�&lt;������ҷ���^�L歴B�O&gt;!l��� �y�8�4������i�k��E,L�nXw�OƺX���.乞d��h��8�1���FCp\n=k�p۩����O�A��V+r���Y��G?/Ў�:8�dhu���R0H��n�ҺI�x@1Mm�Ѯ��{�Ygi�������k��V�e��o�iQC̅�P��1��|��	FXR6�&gt;�YY܌u��lN�g,rLl� ���$r̶���g�����������Ǖ�+�J��~n'�2�.�A�y4��Yg�i@�A��Y�wX�Ν����'늌��	R��\���`�CsGC��� p�n�2ˎju�d����3��VC[@�H�(烷�f]&lt;��2��w(݌г�"
+)�&gt;#kw�#�\4��+��}�K�+=��
+sϦ1�E�\ hՊ�X�_�$�CpQ���o� q]�wI��&gt;�ͪ&gt;~Y �rT�r:���g���e��ǥT���4fU#�n_��(��y��fX�� ��Wi�!�����b��,����1��DJ�!$Uے���^{�[���F&gt;h]�t����7t�E�e�1s���5,��&amp;�U�v�8���k�UY��#�d�l��;��|ɦ�6���\���U�mY�J�����5���H�=5��p�	L��W�hQ|Co4���0iO�?�pr��a���������Q4͝&gt;CpSK���������M��pܣ���5���S)m����C�J�)�\���ן]�g��_�*}��+rx&lt;��K@�gl�B��'������p��X�\���P5��%�20N��f��uറ�F[q
+���^1�����zJ�[� =ig�Eł2��=G(|+��q��5��x��ȶ��"c�H ���9C+`�����R2
+s��ăz08��'�ڹ�gEGt�����h�л�R[N}�Uhc�����k��i*M"���c�ϥT��p&lt;��q]�{���M�YZ�ؒ0=%��Ҝ�v�� O9�S,e�
+&gt;�9��ԗ����Y�S�;�Oְ��f���&gt;/��m��5�S�;+���Wγ��2����o2��`�~F��T�PVU,�,/qɨ�3Z�)Z&amp;#?)�*eBR�����{���)��Ot1�0����
+�o	���dkw*�~~��W��~�D��[t��u�v�&amp;[fG�$�r3��`��G���m�6z��J�dA���1ӏ�T5_�-��d��5��ܕL��\���Q]���\�\.���ߡ����DNV;�4���n��� ��o����Hd�og2+�tWv
+�K`�zΟ��r��?���ƻKO�Wx	ylx+.P� �k��,{�u�{;��Q������oG�&lt;�o�
+��G$8a��j��w^��x��8n�+� dQ=��1f�,��;5��UJ��]�_�����{�Wd��;�1mޟL
+�o⫨��dݖdlg޻�K��U�/�Y;�|���\���K�r���L�H���Et�	+M��σİ�;�Ǽ��G+���uz����s:(��� L��n|!��it�Xwt����e��3�@���J�T)�tj��¢(���X}����|�y� p=M+[���?�֪�g`�0�0 ��Z5v�'	"{i9 8^:�E. �	���g��y'��N�Akt I��W����wrh��*�RP���&gt;�Ю̌�Bq�
+��D���8ܫ|�� q�S��9JI�!��j����I�i
+���x��Cɑ�T1�&lt;m88M�!�n�\u�&lt;ܺ����|���S�إ�Z1���00A�� ��Dd3� � w�&gt;�gW@���Ijr\��Q"��*��8?��(P�bס*��c&gt;��_~	V'���cN���p�����([$��G�G�i&gt;�Pd���z�H��&gt;�t=Nq��Hŋ(r?#���ҘӅ8a�t���k�i5���4_3��=���d��'#��MМ��cg�#"�)���̹銾VO/.��/B���w��&gt;lz�iow�LwR�(��1�CV`�-�J�=� ��=��d\i�p3�ڑ���ԒA�����X���jX7s��Y�Ry���_���F�ž1�G�[�&gt;�߭e�e���1(�vWx�89�ǭ&gt;}zy�nZݣD
+ _��lp��j��)5��K]���.���e�cb&gt;]��wR;�f���F6��z� ��auZ�3ܘ�&amp;���������M��L�������;T֣k�0t�ھ����f[+p�	���c������j�e�B��L����� ֪v�W��	r-Y�;��p;�W�Ϭ)��4)��~W��s��ڒ�V��ҏ��t���նdy2�z�����\���a��Y�%NG�&gt;\��/ugj��9��n�����۵Kgq%��[�.@\b$?0$|��ڵUb��i��ջ�4�ݮ���KYTpH��q�Zڱ��աM^�"E�� �q�z�	���Gg��m�(�L�
+�w�g�&gt;ݫT��5�l�2L$�fc�p@��Z7gqr&amp;�u�-����n�L�P{�k��i7��Y:}���j���B��2$���vڔ3K��|��2R�&lt;���jÒ���+�}��V?{�x�|�S
+�ǀ#�c�L�A-�lvث=����Øa2�nf~2&amp;W?샚�B62u%p��2�]�M����{�|�܋؁���6�ᄀB��#����ިKuN^�	c2F(F}�2֟�S]�\��kn�bP�?�z�l�ϛ�\w$���t�v�\#y��[�O&gt;Q�L�T���yt�[ȸ�጖�u������&amp;�R�e�`;�P�����`c�)^�"@�U� ��O�Im�J1� -����cW�J��?J�y)��F.�o���%�g��̒ ���s�����'y���)����s�� Z̲�Bù�Z9���÷��j�v�)]������[K����ɲ��5�{�ʒH�ՎH��*�0�9�q��3�$�o0u&amp;L(�:u�P�iY��R���+�G�f���F�ƶ,.�tG�$Q���Kx��Hq����͞�z�Ȓ�x��Wl�\��S��x�Q	!����J8g%��j�f��V��	8��g�H�cZpXo{���� �bI7�p$�BBy�WA��;6&lt;��jw0�'�53��Ѵ�*}�f��[�H �.*�&amp;��c��s�Z&gt;lM��I���m��7˃�[�� 7���/x�)�2�ǔ  w�k����&gt;��ʅ��޵&lt;A�p����sX��RG,�%�Y�L�]�gs��-�&amp;;�%���:01X7��XLc���8�η�Fu(��@�j��"��b*�`۞���s+l�Z4��S�d9V��?��eb��7��)���=�܈/L.�3�q��Z�����03��|��Bҹۄ�p�e�$F�6��/Q�54��g��� �T��B��
+�C�$��qN��t�f���A�=Ȯjo�6t�NI$U֮���rˀ1�rMeZ_%���ϙ����[�^���}��d�]����4=n\��-��bG�'�GNz�tjǖ�89�]#�h�T���H$��cbG\
+�@�F�H��~�4!�=�9�F(��$7�D�m��&gt;A��޲�+z�����5��6�[���b�.r3ֱ���H�������"�K��Q��m�)��wykԞ�{
+��MH�O�h��JI$޻��~_O�󭽲�mc�Tە�qv�u$LO��xº��[����im݌Q�Zh�T����g�P�
+��t�;�����L�7z�1�i��W�K����h.�����:�M29t�^"�=�v���'�z�m�ÛP�����Q*�_ά츞����|��=2J���F�����~�;�����
+�˕إ��{S��o*�0�r:��''ʚ��=.K-&gt;V�+����x� ���Z�d�����&amp;�
+7�� ��+�ּM�x��h!��i�ٞ����`q[Bm�d���D�6��OZӅ/��(��6�g���
+��WO�����RHW&amp;7s܌��j�8�sB?�2׵UJϢ"{���ܻ�(g���Im�1n���ڵ4�]�f7�?�NW��ؚ���y���o�&lt;��gӎ���q�0�h�]�'�`�/�����s���lH�q�ɢ�c��+n��4x� M��^�4N9�pk�[�",������6)վm����'��ڒrN/tzŷ��k�]�X���JՊt� �"J?�ȯ����C�Z9L�}1���RK�\�gu/��a���\#U�m̝����89�Tmrѩ=2W5��X���*�0YA�A��K����� ��&amp;�i$~b��`�&lt;sy�I��W��&lt;�iI�~l�-��PɭEѤ�23�j�S�⴮D&amp;ĐW�6�$׷�_;*Z���Z�ҷ�=�$�~^y���JNFc�m(C �9�Z�V;duUo%#q��Ռ�QF���mpC7�&lt;�]�i)F���l[MuL���1�$��z֘��gV�����bZ^�hc�Y�p��V�7B�.���c���2z�ߊ��{����\�1:��P�q�����d���r�W�֤�e��H�|�9�1��6B�x�;A09�akjj��y��af lQ�a�׭1uv��IF�w�$�1�䞇�jF�0��A7��n���I~��L��m���Y��w�ʷ�Ǟ��D�3��V:յ�#��GJ�23'�p95�m+β?24gG&amp;����� �\��v���kE�^,��2�.�@�'V�3��Q�XU�ݍ!)[�:R� r"nF�늩&lt;-�G"��!����Mi&lt;��VR�Hˌ�${g�O���24r䃎ۃ޹%Nڢ��BQ$��U#=H#&lt;}�H��bvR9�K�9Ex�X��0�Is�a|�_j�s���|SJ�S%u���ŐCz���VUx���2��N0�S�w��E�ym�����x�!�#��@&gt;������_iR�0�Xs���TѴ�[n�Ɗd&lt;��px89��wq�Q�&lt;LI#'��h������H��������=}+��N�B�عgln\	�q�+�1�n��=1��W5&gt;�[�Y�tx��s�z}i$Bڃ��f�cᐘ� &gt;��SE���ח
+�M���1� ��}��Z֌gM�n阗Z|7 !���]��;�i	� �U��?(&gt;կ!y�e�c��Q� ׮v��h�2FQr@l`�rP�I3*�ꑯ��V릓v�!�t��֧)`����A��U �/���ldY����!�8�=ET��	#�m+I�;r&gt;��*Kti�G��-�2�ُ$�������$���`�gEV#o\~�֨���J%G�?�3��5nK�s&lt;n�`�耒�����Ʊ�X&gt;�r���2/�uO�4���T0V8n���}&lt;�l�KhUv��9��N0}=j�|�py&lt;�Z@�bh��]z��O󭣉MZ�g�4��k})�O$lcRJI�=;�ҭ}���l[L�*�H�Kc$��������.�� l���b�^!�����~^��&gt;��j�̧���.m�{$?e�
+�Ж�+��؏J����oo��x� �3��o5�x��
+�e�f����x�f�����Ѯ٘�v�&amp;q���c8�c9BI�Ҫ����-v�vF1x�q��Q�m�+aP�گ�/��Ⲥ����f��ʌʲ�@���օ��jȂ�"$b�Hʆ8���⯖�{�1Kanΐ�E
+be&amp;Bޠ���oq�+O�� �d@rt��.�w����Ÿ��+.dez����i�I �ぞ6�#Ec��3\��]��0mZ霳���dL?Fi�s��� i��W�o%�FQC� �;���W/.����:Qo,mS�h���+
+��W��%�$�y {� ��hүkM\˝lk\%��ۤjY2
+ 1�y�z�֗j��=ŲYF@��L�I�:16�8J��!b����?�+Zxhǩ\�t����zd��b#d�鞝�j��,a�v&gt;S�����2ݴ_+G"��)�knF����t�@1��G$7�X���� �r�7L��z�Z����f&lt;�pj�\#�`g'އ�cS���%ǜ�&lt;���Nҧ�� §� Xȩp�34����}�z�-�8o��x�O�1���x�?ι��o��]B��.F'ܱ�p&gt;V8�*������P ��imu'���;���&gt;�j��v�\Gx*�Ǳ� ���R��{_�pmnfB��X�G�2������Gi����l�:ѢN!�1�3����ջ���gh�@$a�rq�һZq��MKS��L�2�8io^��e&lt;QZym02
+�Ó���x�es��'��UAV)�6GAڰ��Z�r^�d��	��NA����g��V��:{�[��P��g��T��xᔺ��e����*��NU��Z��&amp;*���+]&lt;�����J��u��ʸ�m8��rt��V�!8��|�Z�ғ�.�B�VRFߛ�w76���������q�l8R3�8�YNhĀ���GN��"ȅ%�ʎ�`k�^��z�[�XE��'|0�T`��S��V4�F�M�O&amp;(�x�"�^p�� ��g/�4�� 0�ʽ0&gt;��x��2��$�l��˗��C�j7m����Y&lt;ц����&gt;/Ե�Җ��F���0���A�s� iR����vF��ӭ&gt;�D�u1�0�hĒ���;kؗ�*鶧J�uT�uV6,2�����ydy��ې9&gt;��kŋ̎Y��Y0cv�?_�S�qK��H\��Y�a�N��wf�j1�'��yM����#p*
+�#�f���i�c��;�rU�S�C��j�Z\�l/*$g�A�8ϭY������.��P�w� #�Zv3����c��*����\�����w��o�k��(�JC��7����U&lt;%$3G&lt;[�l1E�v��9�FE�TS��y�1�BCG��$�{'�f���K6%$7�Fy��KV���r��#|�~����mldh�d|�p��A&lt;�� J�Q����(��#��Dw18e���)��-HR��wH��+G���ֶ����q����t�n�����]m"8$1�Ϸ"�������&amp;��].F�2Tu&gt;���Y8�?��u��u�WG9,B�� �*����Y$�nr�7}�\�4���xJ����l�)n�R�&lt;�ǵ5۟�굟%��rw&amp;�te� ��RB���$��t@�}������ �N�Ǯ* �d����;�99���dV�e��4M��&lt;���J��m�� CuxЙdI	Y��k�W�q��Ƶ#e��jp7�41˹�g0W'�`݈���W����{k�լUoe�%V��!��O_ƹ��YU�˒F�FJ0%�N.�߅�ijy�������sF�/*�|{ִ�K:��A�F��8�\��!�J�� fg�!P@�q�;�و��$V���d� �H�3܊֪��ړV����I�67l�{����;�!޲N�.����=��C���O���q��g�?Җ�I�E�a'r0��*�w����e9A1K��U_�8A�%�'���n ��3H�1ܨbx	�Ar&gt;���2��"�0X�&gt;VU=~���n�_P��գF�I�Ո���U�`U��E���?��J�����T�1�
+� ��NI�w/�:�P�[�`{`�(��綥�*���I,9� �SG {rʹ�d�����8�1��-�D��RB�c���غu�ϔ�H��VRW+��]�I �n������Q�)��I%�]pf1��rO����E�u��	.Olu���X�]�]�z�&gt;����,I�V&amp;�V����ڙ��&lt;s3s��ښ�ds/N{���if�fm�a;�a�z��X��4e+�%['�5&gt;�)�� 1F�c���׏Ƴbm�m�2T�`�c,s�Pp�Gq�j)�I��-M�tWZc��\)�r��a,���q�݆*��&amp;�x_m�p�[n��Cg�z�;\%��G�¨�L7�d6:g'�AZ���	b�����wm��z-����iv�V{Ȭ�d�@�U~� �Q�YI��yŻ��o��{��\�m��֙E��P:��H&gt;��F��Wb�9ms&gt;}Vkm.�h��� �A�w� ��r6v�:�Za;1f�@O�j^o����$݀:�����VITH7r�#p���SY��[�E��C�Z]7�K��b����=q]����"��j��0��`e��1\q���^�ڥ��d\��6��Mw�"+��������'r��X�5�.]���֣΋�����1����x�j����X���]�Ïa��͖(z�b��5�x�.�.��-]����ٸ��=��Q\�N[+�3IWP�l0��x������1�慷6����s���V-�;!g'۬Y�6�}�?ΐ���M�l�@o.M��}�� 묣JI�3SKB����,�짓� ��ێ���Ŝ�3��@�ch9#�I���z�?|n"�LA��~_ΫMm���N6�&lt;�� Z�Jw�D}b{Z�U{�[�3�H�].N;q����4֮Z�TU*� rN8����X��X��jd�H"Q;�B�G�?ֻ!%{)�KR�\M-�Su*������*+��M&amp;�-�('�����4ni[h�rO?�$�2M�ۑӾO5Ҥы�j����AIY�5`��#��}�3�@Au�e�,z��Ks��R@y�t�{T�$Mv�Ʉ��9ǥ_5�#��y�da�DGP{�6h̃$�}�$w�I����#$&lt;�x&gt;�;���?�$e��8��T����q�-�b8�؀�� g�%�I�ȎG���?�CW���k�rr0�~���Xüɀ����9_B����q�,a�ig��?�qۭO&amp;�j���9*7l��Sl��( 2W����rD_+�8��4]��F�� ��&amp;���Ŕ�u��� ��&lt;Q�p�gC�Zsj��$�:��Scgw&lt;���t��f��l�3�=*ݥ,��C�jI7%&amp;�Vm���� tU��I ��۾a�1���Ұ)6ʩ5��o� ��[&lt;���Z��k��M:�9ܹ�S������I{��X�Ew��u����S,����D�m�d�f5ȺK���9!��8+����ќƈd$��:{{���H��/�h甫�:v�ኋ�Z]�7��9�{n��}MG2h"� �bѹM�2�) t��ƍ�l�N�TW�&gt;�gk��g�d�;�y�?:��̦l��O^�&lt;�]���v(���#��^��/�3�J�wc�� Z�Ì�'���qڪ�-�P�#��Kw�����пev��
+�~��=ŸC����V2�yG&lt;�`�ڦ�S�p=�;V2�n�D*4�L�����q�p(y~���C7�*3�ys߽A��0�27)# ��T}?�;N 8�����:�1@�c@r8�#ۏƔJRC��q�*����h��r{`R5�6r���x#b�,�?i�'_%��&lt;�A�_ҭ-��ܒ�$��n{ zT�=�3�z�z��:,d�g|�=98�"�ĸ��4UM�nIHI ���#�?��m �$�1C��'3���XAT!v�9�\�O�11y��F�G���M\���vl�,m�+�BUF
+����HKwhU7ƥ[qWPC�|f��k�I�Bd~S��� &amp;�M6��"�m��q�5��bӹ�k�y�H�=�V4;A�9�T�:�4&gt;nb��9x�Pr:&gt;Հ5��Q�o� y�sQ�s��#?&gt;�NGA�ҥ)n��e�;!mo;}�	~[,IQ�v��PA WLa��{�-߼�]cs� pH�J�|��@� P2:���7�wihtW��i�U�C��x8�ƩC�)���B% a����TE��"�R#�! ��&gt;�;nS"EL��%��3V]b)�.���7�!]�#�&gt;� J��ᢈ%��Q �RHU���D��21}�bGO��8^( ;�dq�?ɦ���"�ΛL��m���_��r��0u��:|�uǯJ�$�K8ǖ�3H�*@�Ϸ\����4��#��ܜ�ҫE����%I��� vd8=z�1Y:wV��&amp;�Ÿ��I.&amp;x�U$��g�~k
+�!�h�3�۰����+OTQ}x."G�&lt;�J쨌��a�O-���_@:W��S��'{����qp��NG&gt;��V|��r�J�m$I���:Ҭ}�����q����� �T0��uE��P�"�FO\��Ͻh��JВ�"F
+��r�8�}8&lt;�S�yZ`����`pNO��Zt�,W	4m��\����=jH�Ivw�����皇.���o.=���:w���.�	Y����lt皛%�x�Hr��ݻ�q����ɶ'E#?1�`����t�/]E̛�A @�貾��v_�SȦ#maq�J��a���&lt;��H������d(Ġ��xa���Dr��)�20����R��)��8�F�^&lt;��_/�g��2a��g$	W8�O��!�7�GI1��'r
+�I.$��fL*�e1��z�=9���%{�C����U ��� /�M��R�PR&gt;c�}��Z��A���_nO�W�{f���G��}�N�T�G.��Z��I���x`���`��:*�99� ���[p�.#]�����=���;P��Ă[�c��|�&lt;��� J꧆s��m��te��@ݪ0B�l�q����jx⼽Ӥ�MJ��DdL�ٻ����ަ��չ�����\�5DQ��nџl{�,⛿�q�[+��*]3���b*���٤��$�����Vk蚑���x�|�]�˖Q��~��n�Æ;5Q|�b1�g}3G��an}��4���le3;�|�b&gt;R܏�S����`N�c��z��4��X��r&amp;�&amp;H�������6T�P���xĀe�q�gS��8��ܸՔ���ƀ�6VUM�8#�u�_MWlB�j��\R072�6~��x�&amp;��q�x-���s�Fs�֝
+js�)k�ϛ٧�+d]����=q��»�,��o��o�.�N�;�fI{A�Co)V��űOQ����X�F�&gt;��-�8� 7��z	�G'"��Ʃ(�U�Q���OMGMuͻ� ���8&gt;�t�j��%i��,rj�����nf�9fۻ�=kEA�3���4wI-����hG̘;��^1�k*����ei����L�9n�t5֫-δY7�.$QղT�'���ku��"wI�I&gt;PU��c���+�Pq�팔�GU�����9I%����kC4�j�J W,�lsӥ^�!���BLG���|�6�"���p�F�rX�ܓ^�7����l���i�V�%�0��QN���9���֑.H���q��j�T��� �쌧bG�*@ظs*�&amp;A�8� ��v���/,�����1��0?*�E��*�]���~%����Q-�H�Il�q��t�sl�n��6u9&gt;JnV���Jq��2Jđa�d�݁Tw
+G#�֤Zmܗ �탡bQ���?��"g6q[[�b2%�� �7P��#�d��``d.W)}z���I^b݋��P-���&amp;P",R&lt;py��jHt�qtutR$c�������iCk,������r�e{�ӎ�i���N�A4b�#cF �KЌv�ޱ��5偈�Dn�k�ى	�X�*���2���A�y2Ojx��IuKxX�����ڤ}?�?��#�.B�r�J ~j�_��pkd`�,۷�\�z�L 6ѷ&lt;������@�v������ UH�D e��
+ev��׷��u����ɘi�PG�.I�q�W,��(�7 s�q��ފ;{M�lV�J�2��_Ʀ��x�ƻ9�n������e]���4�S1|9eg%�\~����1۱9�֭we|���F��@?���ҽɎ(�*��&gt;���`˸�n}��J��ݛ(+lh�ݽ�8�H��S�*3�� �;VL�Ӯ�Itגv19u����J�� ō�X������t`6�(L���q��MM��:HǾ����
+�a)���,l�Տ,��F�ó.�Wl5Ff��:��ArU�&lt; Ʈ���	4Q�ԇ2R`?ɭcW���5��\�,.Z9
+0��RA���R���r{j��?�S�rOq��Eo�i�]����B�n�zc�F?*禰��"I��7�.�g��#�n�7qz�I%�tc�������c�� t��Z箢���csj��g*�0q�Em[�������S�)m�n`�`$Kc�R�ttt=:��q|�'i[R���}�\��/N����~�������`���v��,\���̋����_ST�����2�� ���x�GN�Tr��Rm"V�=����l2'=����2w'ɒ�Ꮷֳ���c���铚���.e8A������-4ֆy;.F�*��x��&gt;��'͑s�ѽP���ǧҙ$�7z0s�}O�J�^�%��&lt;	d;'fU 0�i�\��};gި�^�ʰ�'8+��z�r��ʛ�`�ޱpw��SV�,�X�tX��܁��A&lt;[�e���(������K+1�҇��%��:UK��i��(8�A�q���ذ60�6Xc8�Q]C�5pX����Q�Ta�3M��3r@ m5a#�c�LlтH\ ���� �T�dŲ�*w��';ǧ� ���9,.a&lt;��)`7�&lt;��aT����,RIwl����9Q�w��6kck��I�䈳��R��*p�^&amp;�NTg���V��چ&lt;A��i�"�p��W̞���R�L�'b7�I�#����+�+��.O�:� ��'yD��*Ww�?CW��u`-�^�WZ�6z�1�d���i�qLxU�-�&gt;�������J���mߝB�[��C��� �MQ��B3���)�g�y���Qc�_�"��1� ^?�o�E���e�d�?��繢�����_�����_����� �V�c2������ Z��x��w�����?�����_��� B��?��?���QEU=�c� �bY� ���/�� �����4QM��s8|d~�[�T�?��?ʊ+H|H���� ���Z��=%� �y?����W�i�ɟ�(����O�]��?�+7�z���E�[������E��B� �Z(�)��9k��j����Y�_��?��� �Tˡ�&gt;��?��
+���~'�� �0��Q�'�ѷ��� ֹ8� ��?��?�T��D�Ft_�֮A����E�H�E��B�w��� ����?����E�?�T�0�A� r� �A� ���?�� \�WU/�zU�6K�z'��� A��w���� u�El�{���|[� ���w� s� �(���{2����_���q�/��o��/�+�Gvo��  �����Ug�B���Q\�e�K�c����c� o_Һ����ʊ+�[��9?�M��g]}�?��� �B�*
+��� �� ׺� :ͷ� �d���(��?��/��� �i"� T&gt;�����A����� ]MM'����QR37R� �c��:w�_��U��!|f���yZ�d�ua� ��_��TQZ���pP}�?�� �j��A� ��Ej�Y���� A[���� �� 9(��_	�-�?��7���T�� �?�� Z(�/�7e$� \���R��'���EWPdV���7���[_��QRʈ��������Vf�Ɨ�&gt;�ϭh�� ��(����]K���O�*�O���Q� ��Eb� ST6O����Iq��?�?Ί+:��&gt;�� C��7���� ��� C�袮;2�^o��o���I�	��W&lt;�5���</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Disposition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">파일 다운로드 시 파일 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답의 콘텐츠 유형</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 0.0.1-SNAPSHOT<br>
+Last updated 2025-01-21 07:46:50 +0900
+</div>
+</div>
+</body>
+</html>

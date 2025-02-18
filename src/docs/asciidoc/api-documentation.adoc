@@ -1,0 +1,67 @@
+= *REST API Documentation*
+React & Vue 강의시 사용할 공용 API 문서
+:toc:
+:toc-title: 목차
+
+== 게시판 서비스
+
+게시물 목록/쓰기/읽기/수정/삭제 기능을 제공합니다.
+
+=== 게시물 목록: /board/list
+
+* HTTP 요청
+include::build/generated-snippets/board/list/http-request.adoc[]
+include::build/generated-snippets/board/list/query-parameters.adoc[]
+
+* HTTP 응답
+include::build/generated-snippets/board/list/http-response.adoc[]
+include::build/generated-snippets/board/list/response-fields.adoc[]
+
+=== 게시물 쓰기: /board/create
+
+* HTTP 요청
+include::build/generated-snippets/board/create/http-request.adoc[]
+include::build/generated-snippets/board/create/request-parts.adoc[]
+
+* HTTP 응답
+include::build/generated-snippets/board/create/http-response.adoc[]
+include::build/generated-snippets/board/create/response-fields.adoc[]
+
+=== 게시물 읽기: /board/read
+
+* HTTP 요청
+include::build/generated-snippets/board/read/http-request.adoc[]
+include::build/generated-snippets/board/read/path-parameters.adoc[]
+
+* HTTP 응답
+include::build/generated-snippets/board/read/http-response.adoc[]
+include::build/generated-snippets/board/read/response-fields.adoc[]
+
+=== 게시물 수정: /board/update
+
+* HTTP 요청
+include::build/generated-snippets/board/update/http-request.adoc[]
+include::build/generated-snippets/board/update/request-parts.adoc[]
+
+* HTTP 응답
+include::build/generated-snippets/board/update/http-response.adoc[]
+include::build/generated-snippets/board/update/response-fields.adoc[]
+
+=== 게시물 삭제: /board/delete
+
+* HTTP 요청
+include::build/generated-snippets/board/delete/http-request.adoc[]
+include::build/generated-snippets/board/delete/path-parameters.adoc[]
+
+* HTTP 응답
+include::build/generated-snippets/board/delete/http-response.adoc[]
+
+=== 첨부 파일 다운로드: /board/battach
+
+* HTTP 요청
+include::build/generated-snippets/board/battach/http-request.adoc[]
+include::build/generated-snippets/board/delete/path-parameters.adoc[]
+
+* HTTP 응답
+include::build/generated-snippets/board/battach/http-response.adoc[]
+include::build/generated-snippets/board/battach/response-headers.adoc[]
