@@ -44,6 +44,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
+    - host: blueskii.iptime.org
     - http:
         paths:
           - path: /board(/|$)(.*)
