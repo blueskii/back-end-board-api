@@ -37,13 +37,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: back-end-all-api
+  name: back-end-board-api
   annotations:
-    # 필수
-    kubernetes.io/ingress.class: "nginx"  
     # 정규식 경로를 사용
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
+  ingressClassName: nginx
   rules:
     - http:
         paths:
