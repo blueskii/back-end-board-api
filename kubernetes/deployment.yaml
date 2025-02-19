@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: back-end-board-api
-          image: blueskii68/back-end-board-api:20250218-3
+          image: blueskii68/back-end-board-api:TAG
 
 ---
 
